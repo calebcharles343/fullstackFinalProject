@@ -17,6 +17,8 @@ export default function Entries() {
 
   return (
     <div className="flex flex-col border w-full max-w-[400px] h-[320px] p-4 gap-4 rounded-md self-center overflow-y-scroll">
+      <p className="text-center">MY ENTRIES</p>
+
       {data?.data?.map((entry: any) => (
         <Entry entry={entry} />
       ))}

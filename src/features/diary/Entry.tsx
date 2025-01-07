@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { dateformat } from "../../utils/dateFormat";
 import { useDeleteEntry } from "./useDeleteEntry";
+import EditDiaryForm from "./EditDiaryForm";
 
 export default function Entry({ entry }: any) {
   const [isEdit, setIsEdit] = useState<Boolean>(false);
@@ -39,7 +40,11 @@ export default function Entry({ entry }: any) {
         </div>
       </div>
 
-      {isEdit && <div className="border w-full h-16"></div>}
+      {isEdit && (
+        <div className="border w-full">
+          <EditDiaryForm entry={entry} />
+        </div>
+      )}
     </div>
   );
 }

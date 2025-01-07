@@ -63,6 +63,11 @@ export const createEntry = async (data: any) => {
   const response = await axiosInstance.post(`/diary/create`, data);
   return response.data;
 };
+
+export const editEntry = async (data: any, id: string) => {
+  const response = await axiosInstance.put(`/diary/update/${id}`, data);
+  return response.data;
+};
 export const entries = async () => {
   const response = await axiosInstance.get(`/diary/entries`);
   return response.data;

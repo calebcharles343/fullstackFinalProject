@@ -1,6 +1,6 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { AxiosError, AxiosResponse } from "axios";
-import { createEntry as createEntryApi } from "../../services/apiDiary";
+import { editEntry as editEntryApi } from "../../services/apiDiary";
 import toast from "react-hot-toast";
 
 interface ErrorResponse {
@@ -9,29 +9,29 @@ interface ErrorResponse {
 
 interface LoginError extends AxiosError<ErrorResponse> {}
 
-export function useCreateEntry() {
+export function useEditEntry(id: string) {
   const queryClient = useQueryClient();
 
   const {
-    mutate: createEntry,
+    mutate: editEntry,
     isPending,
     isError,
   } = useMutation<
     AxiosResponse<any>,
     LoginError,
-    { title: string; content: string }
+    { data: { title: string; content: string }; id: string }
   >({
-    mutationFn: (data) => createEntryApi(data),
+    mutationFn: (data) => editEntryApi(data, id),
 
     onSuccess: (response) => {
-      if (response.status === 201) {
+      if (response.status === 200) {
         console.log(response.data, "❌❌❌");
 
         queryClient.invalidateQueries(["entries"] as any);
         // Invalidate the cache for the specific product reviews
-        toast.success("Entry successful");
+        toast.success("Edit successful");
       } else {
-        toast.error("Entry not successful");
+        toast.error("Edit not successful");
       }
     },
 
@@ -43,5 +43,5 @@ export function useCreateEntry() {
     },
   });
 
-  return { createEntry, isPending, isError };
+  return { editEntry, isPending, isError };
 }
