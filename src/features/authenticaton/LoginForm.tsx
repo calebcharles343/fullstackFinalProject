@@ -35,11 +35,11 @@ const LoginForm: React.FC = () => {
 
   return (
     <div
-      className="h-screen flex flex-col items-center justify-center bg-teal-500  text-white pt-16"
+      className="h-screen flex flex-col items-center justify-center bg-gradient-to-r from-teal-400 to-blue-500 overflow-y-scroll font-roboto tracking-wide  text-white pt-16"
       style={{ fontFamily: "Roboto", letterSpacing: "0.8px" }}
     >
       <div className=" mb-4 flex flex-col items-center">
-        <h1 className="text-sm md:text-lg font-extrabold">DIARY</h1>
+        <h1 className="text-sm md:text-lg font-extrabold">MY DIARY APP</h1>
       </div>
       <div className="w-full md:w-[400px] flex items-center justify-center">
         <form

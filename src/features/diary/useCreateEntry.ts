@@ -25,8 +25,6 @@ export function useCreateEntry() {
 
     onSuccess: (response) => {
       if (response.status === 201) {
-        console.log(response.data, "❌❌❌");
-
         queryClient.invalidateQueries(["entries"] as any);
         // Invalidate the cache for the specific product reviews
         toast.success("Entry successful");
