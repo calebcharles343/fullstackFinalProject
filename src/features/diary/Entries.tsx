@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import SpinnerMini from "../../ui/SpinnerMini";
-import TableModal from "../../ui/TableModal";
+import Modal from "../../ui/Modal";
 import DiaryForm from "./DiaryForm";
 import Entry from "./Entry";
 import { useEntries } from "./useEntries";
@@ -13,6 +13,7 @@ import "react-datepicker/dist/react-datepicker.css";
 export default function Entries() {
   const [isShowForm, setIsShowForm] = useState(false);
   const [isShowEvent, setIsShowEvent] = useState(false);
+  const [eventId, setEventId] = useState<string | null>(null);
   const [viewEvent, setViewEvent] = useState<EventType | null>(null);
 
   const [searchDate, setSearchDate] = useState<Date | null>(null);
@@ -42,6 +43,13 @@ export default function Entries() {
     setIsShowEvent(false);
   };
 
+  useEffect(() => {
+    if (eventId) {
+      const currentEvent = filteredEvents.find((event) => event.id === eventId);
+      setViewEvent(currentEvent || null);
+    }
+  }, [eventId, filteredEvents]);
+
   if (isLoading) {
     return (
       <div className="flex items-center justify-center w-full h-full text-white backdrop-blur-sm">
@@ -53,11 +61,11 @@ export default function Entries() {
   return (
     <div className="flex flex-col items-center w-full gap-3 md:4 p-4 md:p-2">
       {isShowForm && (
-        <TableModal onClose={handleCloseModal}>
+        <Modal onClose={handleCloseModal}>
           <div className="mt-4 bg-white shadow-lg">
-            <DiaryForm />
+            <DiaryForm setIsShowForm={setIsShowForm} />
           </div>
-        </TableModal>
+        </Modal>
       )}
 
       <button
@@ -66,7 +74,6 @@ export default function Entries() {
       >
         Add Event <BiMessageAdd />
       </button>
-      <h2 className="text-xl  md:text-2xl font-bold text-white">MY EVENTS</h2>
       <div className="flex flex-col items-center w-full max-w-[200px] text-sm">
         <ReactDatePicker
           selected={searchDate}
@@ -76,6 +83,7 @@ export default function Entries() {
           placeholderText="Date (yyyy-mm-dd)"
         />
       </div>
+      <h2 className="text-xl  md:text-2xl font-bold text-white">MY EVENTS</h2>
 
       <div
         className={`grid w-full max-w-[610px] lg:max-w-[910px] gap-2 md:gap-2 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 p-2 md:p-4 rounded-md border`}
@@ -84,7 +92,7 @@ export default function Entries() {
           <div
             key={index}
             onClick={() => {
-              setViewEvent(entry);
+              setEventId(entry.id);
               setIsShowEvent(true);
             }}
           >
@@ -93,16 +101,16 @@ export default function Entries() {
         ))}
       </div>
 
-      {isShowEvent && (
-        <TableModal onClose={handleCloseModal}>
+      {isShowEvent && viewEvent && (
+        <Modal onClose={handleCloseModal}>
           <div className="w-full max-w-[400px] mt-4 bg-white shadow-lg rounded-lg">
             <Entry
-              entry={viewEvent as EventType}
+              entry={viewEvent}
               isShowEvent={isShowEvent}
               setIsShowEvent={setIsShowEvent}
             />
           </div>
-        </TableModal>
+        </Modal>
       )}
     </div>
   );

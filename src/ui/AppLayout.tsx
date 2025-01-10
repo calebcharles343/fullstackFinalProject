@@ -9,7 +9,7 @@ export default function AppLayout() {
     logout();
   };
   return (
-    <div className="flex flex-col h-screen bg-gradient-to-br from-rose-600 to-indigo-400 font-roboto tracking-wide">
+    <div className="flex flex-col h-screen bg-gradient-to-br from-rose-600 to-gray-900 font-roboto tracking-wide">
       <header className="flex items-center justify-between bg-white shadow-md border-b-2 border-teal-500 px-4 py-2 top-0 z-10">
         <div className="container mr-auto">
           <h1 className="text-xl font-bold text-teal-600">My Diary App</h1>

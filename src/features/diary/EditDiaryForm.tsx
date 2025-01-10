@@ -23,7 +23,7 @@ export default function EditDiaryForm({
     editEntry({ title, content } as any);
     setIsEdit(false);
     if (setIsShowEvent) {
-      setIsShowEvent(false);
+      // setIsShowEvent(false);
     }
   };
 

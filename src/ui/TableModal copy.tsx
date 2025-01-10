@@ -6,7 +6,7 @@ interface ModalProps {
   children: ReactNode;
 }
 
-const TableModal: React.FC<ModalProps> = ({ children, onClose }) => {
+const Modal: React.FC<ModalProps> = ({ children, onClose }) => {
   return ReactDOM.createPortal(
     <div className="  fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 backdrop-blur-sm">
       <div className=" w-screen md:w-max bg-white bg-opacity-5 relative rounded shadow-lg p-7 overflow-y-scroll">
@@ -23,4 +23,4 @@ const TableModal: React.FC<ModalProps> = ({ children, onClose }) => {
   );
 };
 
-export default TableModal;
+export default Modal;

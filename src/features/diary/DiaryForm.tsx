@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useCreateEntry } from "./useCreateEntry";
 import toast from "react-hot-toast";
 
-export default function DiaryForm() {
+export default function DiaryForm({ setIsShowForm }: any) {
   const [title, setTitle] = useState<string>("");
   const [content, setContent] = useState<string>("");
 
@@ -16,6 +16,7 @@ export default function DiaryForm() {
     }
 
     createEntry({ title, content } as any);
+    setIsShowForm(false);
   };
 
   return (
@@ -32,7 +33,7 @@ export default function DiaryForm() {
             id="title"
             className="p-2 text-xs border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-teal-500"
             value={title}
-            maxLength={20}
+            maxLength={50}
             minLength={1}
             onChange={(e) => setTitle(e.target.value)}
             required
