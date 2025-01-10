@@ -14,12 +14,12 @@ export default function AppLayout() {
         <div className="container mr-auto">
           <h1 className="text-xl font-bold text-teal-600">My Diary App</h1>
         </div>
-        <div className=" ml-2 md:ml-0 shadow-lg">
+        <div className="flex justify-center items-center h-10  w-[110px] m border ml-2 md:ml-0 shadow-lg hover:bg-gray-800 hover:text-gray-50 transition-colors duration-200">
           {isPending ? (
             <SpinnerMini />
           ) : (
             <button
-              className="border flex w-[100px] items-center justify-center gap-2    p-2 rounded hover:bg-gray-800 hover:text-gray-50 transition-colors duration-200"
+              className="flex justify-center items-center gap-1 p-2 rounded "
               onClick={handleLogout}
             >
               <BiLogOut />
