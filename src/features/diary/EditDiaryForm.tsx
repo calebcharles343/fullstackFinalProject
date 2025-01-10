@@ -3,7 +3,11 @@ import toast from "react-hot-toast";
 
 import { useEditEntry } from "./useEditEntry";
 
-export default function EditDiaryForm({ entry }: any) {
+export default function EditDiaryForm({
+  entry,
+  setIsEdit,
+  setIsShowEvent,
+}: any) {
   const [title, setTitle] = useState<string>(entry.title);
   const [content, setContent] = useState<string>(entry.content);
 
@@ -17,43 +21,55 @@ export default function EditDiaryForm({ entry }: any) {
     }
 
     editEntry({ title, content } as any);
+    setIsEdit(false);
+    if (setIsShowEvent) {
+      setIsShowEvent(false);
+    }
   };
 
   return (
-    <div className="border p-4  w-full  rounded-md self-center">
+    <div className="border p-4 w-full md:w-[300px]  rounded-md self-center">
       <form onSubmit={handleSubmit} className="flex flex-col">
         <div className="flex flex-col mb-4">
-          <label htmlFor="title" className="text-sm font-bold text-center">
-            Title
+          <label
+            htmlFor="title"
+            className="text-sm text-center font-bold text-teal-600"
+          >
+            Event Title
           </label>
           <input
             id="title"
-            className="p-2 text-xs border rounded-lg shadow-md resize-none text-gray-600"
+            className="p-2 text-xs border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-teal-500"
             value={title}
-            maxLength={50}
+            maxLength={20}
             minLength={1}
             onChange={(e) => setTitle(e.target.value)}
+            required
           />
         </div>
         <div className="flex flex-col mb-4">
-          <label htmlFor="content" className="text-sm font-bold text-center">
-            Content
+          <label
+            htmlFor="content"
+            className="text-sm text-center font-bold text-teal-600"
+          >
+            Event Content
           </label>
           <textarea
             id="content"
-            className="p-2 h-16 text-sm border rounded-lg shadow-md resize-none text-gray-600"
+            className="p-2 h-40 text-xs border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-teal-500"
             value={content}
-            maxLength={200}
+            maxLength={400}
             minLength={1}
             onChange={(e) => setContent(e.target.value)}
+            required
           />
         </div>
 
         <button
           type="submit"
-          className="py-1 px-2 text-xs bg-blue-500 text-white rounded-lg"
+          className="py-1 px-2 text-xs font-bold bg-teal-500 text-white rounded-lg"
         >
-          {isPending ? "Editing" : "Edit Entry"}
+          {isPending ? "Updating" : "Update Event"}
         </button>
       </form>
     </div>

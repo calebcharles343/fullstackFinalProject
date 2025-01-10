@@ -9,17 +9,17 @@ export default function AppLayout() {
     logout();
   };
   return (
-    <div className="h-screen bg-gradient-to-r from-teal-400 to-blue-500 overflow-y-scroll font-roboto tracking-wide">
-      <header className="flex items-center \  justify-between bg-white shadow-md sticky px-4 py-2 top-0 z-10">
-        <div className="container mx-auto ">
+    <div className="flex flex-col h-screen bg-gradient-to-br from-rose-600 to-indigo-400 font-roboto tracking-wide">
+      <header className="flex items-center justify-between bg-white shadow-md border-b-2 border-teal-500 px-4 py-2 top-0 z-10">
+        <div className="container mr-auto">
           <h1 className="text-xl font-bold text-teal-600">My Diary App</h1>
         </div>
-        <div className="ml-2 md:ml-0">
+        <div className=" ml-2 md:ml-0 shadow-lg">
           {isPending ? (
             <SpinnerMini />
           ) : (
             <button
-              className="border flex w-[100px] items-center justify-center gap-2  text-gray-800  p-2 rounded hover:bg-gray-800 hover:text-gray-50 transition-colors duration-200"
+              className="border flex w-[100px] items-center justify-center gap-2    p-2 rounded hover:bg-gray-800 hover:text-gray-50 transition-colors duration-200"
               onClick={handleLogout}
             >
               <BiLogOut />
@@ -28,11 +28,11 @@ export default function AppLayout() {
           )}
         </div>
       </header>
-      <main>
+      <main className="h-full text-white overflow-y-scroll  ">
         <Outlet />
       </main>
-      <footer className="bg-white text-center py-4 mt-auto">
-        <p className="text-gray-600">
+      <footer className="border-t-2 border-teal-500 bg-white text-center py-4 mt-auto">
+        <p className="text-gray-800">
           &copy; 2025 My Diary App. All rights reserved.
         </p>
       </footer>

@@ -25,21 +25,19 @@ export function useEditEntry(id: string) {
 
     onSuccess: (response) => {
       if (response.status === 200) {
-        console.log(response.data, "❌❌❌");
-
         queryClient.invalidateQueries(["entries"] as any);
         // Invalidate the cache for the specific product reviews
-        toast.success("Edit successful");
+        toast.success("Update successful");
       } else {
-        toast.error("Edit not successful");
+        toast.error("Update not successful");
       }
     },
 
     onError: (error) => {
-      toast.error("Entry Error");
+      toast.error("Update Error");
 
       const errorMessage = error.response?.data?.message || "An error occurred";
-      console.error("Entry Creation Error:", errorMessage);
+      console.error("Update Error:", errorMessage);
     },
   });
 

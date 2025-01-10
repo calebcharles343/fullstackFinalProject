@@ -19,32 +19,40 @@ export default function DiaryForm() {
   };
 
   return (
-    <div className="border p-4 w-full max-w-md rounded-md bg-white shadow-lg">
+    <div className="border p-4 w-full md:w-[300px] rounded-md bg-white shadow-lg">
       <form onSubmit={handleSubmit} className="flex flex-col space-y-4">
         <div className="flex flex-col">
-          <label htmlFor="title" className="text-sm font-bold text-teal-600">
-            Title
+          <label
+            htmlFor="title"
+            className="text-sm text-center font-bold text-teal-600"
+          >
+            Event Title
           </label>
           <input
             id="title"
             className="p-2 text-xs border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-teal-500"
             value={title}
-            maxLength={50}
+            maxLength={20}
             minLength={1}
             onChange={(e) => setTitle(e.target.value)}
+            required
           />
         </div>
         <div className="flex flex-col">
-          <label htmlFor="content" className="text-sm font-bold text-teal-600">
-            Content
+          <label
+            htmlFor="content"
+            className="text-sm text-center font-bold text-teal-600"
+          >
+            Event Content
           </label>
           <textarea
             id="content"
-            className="p-2 h-24 text-xs border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-teal-500"
+            className="p-2 h-40 text-xs border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-teal-500"
             value={content}
-            maxLength={200}
+            maxLength={400}
             minLength={1}
             onChange={(e) => setContent(e.target.value)}
+            required
           />
         </div>
 
@@ -52,7 +60,7 @@ export default function DiaryForm() {
           type="submit"
           className="py-2 px-4 text-sm bg-teal-500 text-white rounded-lg hover:bg-teal-700 transition-colors duration-200"
         >
-          {isPending ? "Creating..." : "Create Entry"}
+          {isPending ? "Adding..." : "Add Event"}
         </button>
       </form>
     </div>

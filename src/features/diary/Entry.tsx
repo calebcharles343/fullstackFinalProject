@@ -1,9 +1,23 @@
-import { useState } from "react";
+import { useEffect, useState, Dispatch, SetStateAction } from "react";
 import { dateformat } from "../../utils/dateFormat";
 import { useDeleteEntry } from "./useDeleteEntry";
 import EditDiaryForm from "./EditDiaryForm";
+import { BiEdit, BiTrash, BiCalendarPlus } from "react-icons/bi";
+import TableModal from "../../ui/TableModal";
+import { EventType } from "../../interfaces";
+import truncate from "truncate-html";
 
-export default function Entry({ entry }: any) {
+declare const gapi: any;
+
+export default function Entry({
+  entry,
+  isShowEvent,
+  setIsShowEvent,
+}: {
+  entry: EventType;
+  isShowEvent?: boolean;
+  setIsShowEvent?: Dispatch<SetStateAction<true | false>>;
+}) {
   const [isEdit, setIsEdit] = useState(false);
   const { deleteEntry, isDeleting } = useDeleteEntry();
 
@@ -13,40 +27,144 @@ export default function Entry({ entry }: any) {
 
   const handleDeleteEntry = (id: string) => {
     deleteEntry(id);
+    setIsEdit(false);
+    if (setIsShowEvent) {
+      setIsShowEvent(false);
+    }
   };
 
-  return (
-    <div className="flex flex-col border rounded-lg shadow-lg p-4 bg-white">
-      <div className="flex flex-col justify-between">
-        <div className="flex items-center justify-between mb-2">
-          <h2 className="text-lg font-semibold text-gray-800">{entry.title}</h2>
-          <div className="flex items-center space-x-2">
-            <button
-              className="px-2 py-1 text-xs  bg-teal-500 rounded hover:bg-teal-600 transition-colors"
-              onClick={handleToggleEdit}
-            >
-              {isEdit ? "Cancel" : "Edit"}
-            </button>
-            <button
-              className="px-2 py-1 text-xs bg-red-500 rounded hover:bg-red-600 transition-colors"
-              onClick={() => handleDeleteEntry(entry.id)}
-            >
-              {isDeleting ? "..." : "X"}
-            </button>
-          </div>
-        </div>
-        <p className="text-gray-600">{entry.content}</p>
-      </div>
+  // Load Google API client library and initialize it
+  const loadGoogleAPI = () => {
+    gapi.load("client:auth2", initClient);
+  };
 
-      {isEdit && (
-        <div className="mt-4">
-          <EditDiaryForm entry={entry} />
+  const initClient = () => {
+    gapi.client
+      .init({
+        apiKey: "AIzaSyA19KUErfwrGWl4WsBfLnOqeqTc_N5JGAw", // Replace with your API key
+        clientId: "YOUR_CLIENT_ID", // Replace with your Client ID
+        discoveryDocs: [
+          "https://www.googleapis.com/discovery/v1/apis/calendar/v3/rest",
+        ],
+        scope: "https://www.googleapis.com/auth/calendar.events",
+      })
+      .then(() => {
+        gapi.auth2.getAuthInstance().isSignedIn.listen(updateSigninStatus);
+        updateSigninStatus(gapi.auth2.getAuthInstance().isSignedIn.get());
+      });
+  };
+
+  const updateSigninStatus = (isSignedIn: boolean) => {
+    if (isSignedIn) {
+      console.log("User is signed in.");
+    } else {
+      gapi.auth2.getAuthInstance().signIn();
+    }
+  };
+
+  const handleAddToCalendar = () => {
+    const event = {
+      summary: entry.title,
+      description: entry.content,
+      start: {
+        dateTime: entry.createdAt, // Adjust to your actual datetime format
+        timeZone: "Your Time Zone",
+      },
+      end: {
+        dateTime: new Date(
+          new Date(entry.createdAt).getTime() + 60 * 60 * 1000
+        ).toISOString(), // Adjust to your actual end time
+        timeZone: "Your Time Zone",
+      },
+    };
+
+    gapi.client.calendar.events
+      .insert({
+        calendarId: "primary",
+        resource: event,
+      })
+      .then((response: any) => {
+        console.log("Event created: " + response.htmlLink);
+        alert("Event added to Google Calendar");
+      });
+  };
+
+  // Load Google API client library on component mount
+  useEffect(() => {
+    loadGoogleAPI();
+  }, []);
+
+  return (
+    <>
+      {!isEdit && (
+        <div
+          className={`flex flex-col w-full  ${!isShowEvent && "h-[175px]"} ${
+            isShowEvent && "md:w-[400px]"
+          }  text-gray-700 border-r-[5px] border-teal-500 rounded-lg shadow-lg p-4 bg-gradient-to-tr from-white to-red-50`}
+        >
+          <div className="flex justify-between mb-2">
+            <h2
+              className={`${
+                isShowEvent ? "text-sm" : "text-[13px]"
+              } md:text-base font-semibold break-words`}
+            >
+              {truncate(entry.title, {
+                length: isShowEvent ? 25 : 15,
+                ellipsis: "...",
+              })}
+            </h2>
+            {isShowEvent && (
+              <div className="flex items-center gap-3">
+                <button
+                  className="py-1 text-xs text-teal-500 transition-colors hover:text-teal-700"
+                  onClick={handleToggleEdit}
+                >
+                  {isEdit ? "Cancel" : <BiEdit />}
+                </button>
+                <button
+                  className="py-1 text-sm text-red-500 transition-colors hover:text-red-700"
+                  onClick={() => handleDeleteEntry(entry.id)}
+                >
+                  {isDeleting ? "..." : <BiTrash />}
+                </button>
+                <button
+                  className="py-1 text-sm text-blue-500 transition-colors hover:text-blue-700"
+                  onClick={handleAddToCalendar}
+                >
+                  Add to Calendar <BiCalendarPlus />
+                </button>
+              </div>
+            )}
+          </div>
+          <div className="flex-grow overflow-hidden">
+            <div
+              className={`${
+                isShowEvent ? "text-xs" : "text-[12px]"
+              } md:text-sm overflow-y-hidden overflow-x-hidden`}
+            >
+              <p>{entry.content}</p>
+            </div>
+          </div>
+
+          <span className="mt-2 text-xs text-rose-500 font-bold text-right">
+            {dateformat(entry?.createdAt)}
+          </span>
         </div>
       )}
 
-      <span className="mt-4 text-xs text-gray-500 text-right">
-        {dateformat(entry?.createdAt)}
-      </span>
-    </div>
+      {isEdit && (
+        <TableModal onClose={handleToggleEdit}>
+          <div className="bg-white mt-4 shadow-lg p-4 rounded-lg">
+            <EditDiaryForm
+              entry={entry}
+              setIsEdit={setIsEdit}
+              setIsShowEvent={setIsShowEvent}
+            />
+          </div>
+        </TableModal>
+      )}
+    </>
   );
 }
+
+// Ensure you replace "YOUR_API_KEY" and "YOUR_CLIENT_ID" with your actual Google API credentials.

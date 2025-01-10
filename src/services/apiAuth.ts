@@ -1,18 +1,15 @@
 import axios from "axios";
 
-import { SignupTypes } from "../interfaces.ts";
+// import { SignupTypes } from "../interfaces.ts";
 
 const apiURL = "https://tunga-c3-diaryapi.onrender.com/api/cohort3-fullstack";
 
 export const login = async function (email: string, password: string) {
   try {
-    const response = await axios.post<Partial<SignupTypes>>(
-      `${apiURL}/auth/login`,
-      {
-        email,
-        password,
-      }
-    );
+    const response = await axios.post(`${apiURL}/auth/login`, {
+      email,
+      password,
+    });
     console.log(response.data);
 
     return response.data;

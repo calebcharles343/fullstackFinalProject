@@ -2,11 +2,11 @@
 
 /* Add this to your global CSS file */
 ::-webkit-scrollbar {
-  width: 6px; /* Adjust the width as needed */
+  width: 3px; /* Adjust the width as needed */
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: #242221; /* Change the color as needed */
+  background-color: #2ed1c1; /* Change the color as needed */
   border-radius: 10px; /* Optional: Add rounded corners */
 }
 
