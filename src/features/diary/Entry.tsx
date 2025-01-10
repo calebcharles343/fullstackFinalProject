@@ -131,7 +131,7 @@ export default function Entry({
                   className="py-1 text-sm text-blue-500 transition-colors hover:text-blue-700"
                   onClick={handleAddToCalendar}
                 >
-                  Add to Calendar <BiCalendarPlus />
+                  <BiCalendarPlus />
                 </button>
               </div>
             )}
