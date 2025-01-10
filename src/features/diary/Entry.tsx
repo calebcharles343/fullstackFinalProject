@@ -59,11 +59,11 @@ export default function Entry({
                   ellipsis: "...",
                 })}
             </h2>
-            <div className="flex gap-3">
+            <div className="flex gap-4">
               {isShowEvent && (
-                <div className="flex items-center gap-3">
+                <div className="flex items-center gap-4">
                   <button
-                    className="py-1 text-base text-teal-500 transition-colors hover:text-teal-700"
+                    className="py-1 text-lg text-teal-500 transition-colors hover:text-teal-700"
                     onClick={handleToggleEdit}
                   >
                     {isEdit ? "Cancel" : <BiEdit />}
@@ -71,7 +71,7 @@ export default function Entry({
 
                   <button
                     onClick={handleToggleCalendar}
-                    className="py-1 text-base text-blue-500 transition-colors hover:text-blue-700"
+                    className="py-1 text-lg text-blue-500 transition-colors hover:text-blue-700"
                   >
                     <BiCalendarPlus />
                   </button>
@@ -79,7 +79,7 @@ export default function Entry({
               )}
 
               <button
-                className="py-1 text-base text-red-500 transition-colors hover:text-red-700"
+                className="py-1 text-lg text-red-500 transition-colors hover:text-red-700"
                 onClick={() => handleDeleteEntry(entry.id)}
               >
                 {isDeleting ? "..." : <BiTrash />}
