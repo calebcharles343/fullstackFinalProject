@@ -92,7 +92,7 @@ export default function Entry({
               {isShowEvent && (
                 <h2
                   className={`${
-                    isShowEvent ? "text-sm" : "text-[13px]"
+                    isShowEvent ? "text-lg" : "text-[13px]"
                   } md:text-base font-semibold break-words mb-2`}
                 >
                   {entry.title}
