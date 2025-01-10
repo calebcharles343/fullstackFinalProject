@@ -41,16 +41,21 @@ export default function Entry({
   const initClient = () => {
     gapi.client
       .init({
-        apiKey: "AIzaSyA19KUErfwrGWl4WsBfLnOqeqTc_N5JGAw", // Replace with your API key
-        clientId: "YOUR_CLIENT_ID", // Replace with your Client ID
+        apiKey: "AIzaSyA19KUErfwrGWl4WsBfLnOqeqTc_N5JGAw",
+        clientId:
+          "759906290313-k7v0alpbhtoibtpd8jjkcj626763d88o.apps.googleusercontent.com",
         discoveryDocs: [
           "https://www.googleapis.com/discovery/v1/apis/calendar/v3/rest",
         ],
         scope: "https://www.googleapis.com/auth/calendar.events",
       })
       .then(() => {
-        gapi.auth2.getAuthInstance().isSignedIn.listen(updateSigninStatus);
-        updateSigninStatus(gapi.auth2.getAuthInstance().isSignedIn.get());
+        const authInstance = gapi.auth2.getAuthInstance();
+        authInstance.isSignedIn.listen(updateSigninStatus);
+        updateSigninStatus(authInstance.isSignedIn.get());
+      })
+      .catch((error: any) => {
+        console.error("Error initializing Google API client:", error);
       });
   };
 
