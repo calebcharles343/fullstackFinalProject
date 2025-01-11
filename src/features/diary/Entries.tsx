@@ -139,9 +139,9 @@ export default function Entries() {
           </div>
         )}
         {filteredEvents.length > 0 && (
-          <div className=" h-[564px] md:h-[478px]  overflow-y-scroll">
+          <div className="h-[478px] overflow-y-scroll">
             <div
-              className={` grid w-full max-w-[610px] lg:max-w-[910px]  gap-2 md:gap-2 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 p-2 md:p-4`}
+              className={`grid min-w-[300px] md:min-w-[610px] lg:w-[910px] lg:max-w-[910px]   gap-2 md:gap-2 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 p-2 md:p-4`}
             >
               {filteredEvents?.map((entry: EventType, index: number) => (
                 <div
