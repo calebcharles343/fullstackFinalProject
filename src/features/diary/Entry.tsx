@@ -49,11 +49,7 @@ export default function Entry({
           } text-gray-700 border-r-[5px] border-teal-500 rounded-lg shadow-lg p-4 bg-gradient-to-tr from-white to-red-50`}
         >
           <div className="flex justify-between items-center mb-1">
-            <h2
-              className={`${
-                isShowEvent ? "text-sm" : "text-[13px]"
-              } md:text-base font-semibold break-words`}
-            >
+            <h2 className={`text-base font-semibold break-words`}>
               {!isShowEvent &&
                 truncate(entry.title, {
                   length: isShowEvent ? 25 : 15,
@@ -91,20 +87,27 @@ export default function Entry({
           <div className="flex-grow overflow-hidden">
             <div className={`md:text-sm overflow-y-hidden overflow-x-hidden`}>
               {isShowEvent && (
-                <h2
-                  className={`${
-                    isShowEvent ? "text-lg" : "text-[13px]"
-                  } md:text-base font-semibold break-words mb-2`}
-                >
+                <h2 className="text-base md:text-lg  font-semibold break-words mb-2">
                   {entry.title}
                 </h2>
               )}
-              <p
-                className={`${isShowEvent ? "text-base" : "text-[12px]"}`}
-                style={{ lineHeight: "1.3" }}
-              >
-                {entry.content}
-              </p>
+
+              {!isShowEvent && (
+                <p
+                  className={`text-base text-[12px]"}`}
+                  style={{ lineHeight: "1.3" }}
+                >
+                  {entry.content}
+                </p>
+              )}
+              {isShowEvent && (
+                <p
+                  className={`text-sm md:text-base text-[12px]"}`}
+                  style={{ lineHeight: "1.3" }}
+                >
+                  {entry.content}
+                </p>
+              )}
             </div>
           </div>
 
@@ -151,8 +154,8 @@ export default function Entry({
               position: "absolute",
               top: 0,
               left: 0,
-              width: "155%", // Increase width to compensate for scaling
-              height: "198%", // Increase height to compensate for scaling
+              width: "154%", // Increase width to compensate for scaling
+              height: "155%", // Increase height to compensate for scaling
               border: 0,
               transform: "scale(0.65)", // Scale content down
               transformOrigin: "top left", // Scale from top-left
