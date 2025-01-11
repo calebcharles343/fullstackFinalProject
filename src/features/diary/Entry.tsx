@@ -63,7 +63,8 @@ export default function Entry({
             !isShowEvent && "h-[130px] md:h-[144px]"
           } ${
             isShowEvent && "md:w-[400px]"
-          } text-gray-700 border-r-[5px] border-teal-500 rounded-lg shadow-lg p-3 md:p-4 bg-gradient-to-tr from-white to-red-50`}
+          } text-gray-700 border-r-[5px] border-teal-500 rounded-lg shadow-lg p-3
+           md:p-4 bg-gradient-to-tr from-white to-red-50`}
         >
           <div className="flex justify-between items-center mb-1">
             <h2 className={`text-base md:text-lg font-semibold break-words`}>
@@ -77,7 +78,8 @@ export default function Entry({
               {isShowEvent && (
                 <div className="flex items-center gap-4">
                   <button
-                    className="py-1 text-lg text-teal-500 transition-colors hover:text-teal-700"
+                    className="py-1 text-lg text-teal-500 transition-colors 
+                    hover:text-teal-700"
                     onClick={handleToggleEdit}
                   >
                     {isEdit ? "Cancel" : <BiEdit />}
@@ -85,7 +87,8 @@ export default function Entry({
 
                   <button
                     onClick={handleToggleCalendar}
-                    className="py-1 text-lg text-blue-500 transition-colors hover:text-blue-700"
+                    className="py-1 text-lg text-blue-500 transition-colors 
+                    hover:text-blue-700"
                   >
                     <BiCalendarPlus />
                   </button>
@@ -93,7 +96,8 @@ export default function Entry({
               )}
 
               <button
-                className="py-1 text-lg text-red-500 transition-colors hover:text-red-700"
+                className="py-1 text-lg text-red-500 transition-colors 
+                hover:text-red-700"
                 onClick={handleDeleteEntry}
               >
                 {isDeleting ? "..." : <BiTrash />}
@@ -112,7 +116,7 @@ export default function Entry({
               {!isShowEvent && (
                 <p
                   className={`text-[13px] md:text-[14px]`}
-                  style={{ lineHeight: "1.3" }}
+                  style={{ lineHeight: "1.4" }}
                 >
                   {entry.content}
                 </p>
@@ -150,7 +154,8 @@ export default function Entry({
 
       {isShowEvent && isCalendar && (
         <div
-          className="border-r-[5px] border-rose-500 rounded-lg mt-4 relative w-full overflow-hidden"
+          className="border-r-[5px] border-rose-500 rounded-lg mt-4 relative w-full 
+          overflow-hidden"
           style={{
             paddingTop: "56.25%", // Aspect ratio 16:9
           }}
@@ -166,7 +171,8 @@ export default function Entry({
             }}
           />
           <iframe
-            src="https://calendar.google.com/calendar/embed?src=calebcharles343%40gmail.com&ctz=Africa%2FLagos"
+            src="https://calendar.google.com/calendar/embed?src=calebcharles343%40gmail
+            .com&ctz=Africa%2FLagos"
             style={{
               position: "absolute",
               top: 0,
