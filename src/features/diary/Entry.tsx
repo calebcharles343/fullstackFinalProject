@@ -46,15 +46,14 @@ export default function Entry({
         <div
           className={`flex flex-col w-full ${!isShowEvent && "h-[175px]"} ${
             isShowEvent && "md:w-[400px]"
-          } text-gray-700 border-r-[5px] border-teal-500 rounded-lg shadow-lg p-4 bg-gradient-to-tr from-white to-red-50`}
+          } text-gray-700 border-r-[5px] border-teal-500 rounded-lg shadow-lg p-3 md:p-4 bg-gradient-to-tr from-white to-red-50`}
         >
           <div className="flex justify-between items-center mb-1">
-            <h2 className={`text-base font-semibold break-words`}>
-              {!isShowEvent &&
-                truncate(entry.title, {
-                  length: isShowEvent ? 25 : 15,
-                  ellipsis: "...",
-                })}
+            <h2 className={`text-base md:text-lg font-semibold break-words`}>
+              {truncate(entry.title, {
+                length: isShowEvent ? 25 : 15,
+                ellipsis: "...",
+              })}
             </h2>
             <div className="flex gap-4">
               {isShowEvent && (
@@ -94,7 +93,7 @@ export default function Entry({
 
               {!isShowEvent && (
                 <p
-                  className={`text-base text-[12px]"}`}
+                  className={`text-[13px] md:text-[14px]`}
                   style={{ lineHeight: "1.3" }}
                 >
                   {entry.content}
@@ -102,7 +101,7 @@ export default function Entry({
               )}
               {isShowEvent && (
                 <p
-                  className={`text-sm md:text-base text-[12px]"}`}
+                  className={`text-sm md:text-base"}`}
                   style={{ lineHeight: "1.3" }}
                 >
                   {entry.content}
@@ -154,10 +153,10 @@ export default function Entry({
               position: "absolute",
               top: 0,
               left: 0,
-              width: "154%", // Increase width to compensate for scaling
-              height: "155%", // Increase height to compensate for scaling
+              width: "144%", // Increase width to compensate for scaling
+              height: "145%", // Increase height to compensate for scaling
               border: 0,
-              transform: "scale(0.65)", // Scale content down
+              transform: "scale(0.70)", // Scale content down
               transformOrigin: "top left", // Scale from top-left
             }}
             frameBorder="0"
