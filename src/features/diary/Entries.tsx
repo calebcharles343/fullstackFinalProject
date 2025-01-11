@@ -86,7 +86,7 @@ export default function Entries() {
       <h2 className="text-xl  md:text-2xl font-bold text-white">MY EVENTS</h2>
 
       <div
-        className={`grid w-full max-w-[610px] lg:max-w-[910px] gap-2 md:gap-2 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 p-2 md:p-4 rounded-md border`}
+        className={`grid w-full max-w-[610px] lg:max-w-[910px] gap-2 md:gap-2 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 p-2 md:p-4 `}
       >
         {filteredEvents?.map((entry: EventType, index: number) => (
           <div
