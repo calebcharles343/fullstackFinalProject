@@ -12,7 +12,7 @@ import "react-datepicker/dist/react-datepicker.css";
 
 export default function Entries() {
   const [isShowForm, setIsShowForm] = useState(false);
-  const [isShowEvent, setIsShowEvent] = useState(false);
+  const [isShowEvent, setIsShowEvent] = useState<true | false>(false);
   const [eventId, setEventId] = useState<string | null>(null);
   const [viewEvent, setViewEvent] = useState<EventType | null>(null);
 

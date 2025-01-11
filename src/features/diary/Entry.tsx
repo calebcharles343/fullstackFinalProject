@@ -27,8 +27,9 @@ export default function Entry({
     setIsCalendar(!isCalendar);
   };
 
-  const handleDeleteEntry = (id: string) => {
-    deleteEntry(id);
+  const handleDeleteEntry = (e: any) => {
+    e.stopPropagation();
+    deleteEntry(entry.id);
     setIsEdit(false);
     if (setIsShowEvent) {
       setIsShowEvent(false);
@@ -47,7 +48,7 @@ export default function Entry({
             isShowEvent && "md:w-[400px]"
           } text-gray-700 border-r-[5px] border-teal-500 rounded-lg shadow-lg p-4 bg-gradient-to-tr from-white to-red-50`}
         >
-          <div className="flex justify-between mb-1">
+          <div className="flex justify-between items-center mb-1">
             <h2
               className={`${
                 isShowEvent ? "text-sm" : "text-[13px]"
@@ -80,7 +81,7 @@ export default function Entry({
 
               <button
                 className="py-1 text-lg text-red-500 transition-colors hover:text-red-700"
-                onClick={() => handleDeleteEntry(entry.id)}
+                onClick={handleDeleteEntry}
               >
                 {isDeleting ? "..." : <BiTrash />}
               </button>
@@ -150,7 +151,7 @@ export default function Entry({
               position: "absolute",
               top: 0,
               left: 0,
-              width: "220%", // Increase width to compensate for scaling
+              width: "155%", // Increase width to compensate for scaling
               height: "198%", // Increase height to compensate for scaling
               border: 0,
               transform: "scale(0.65)", // Scale content down
