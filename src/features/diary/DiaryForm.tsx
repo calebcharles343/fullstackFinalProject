@@ -25,13 +25,13 @@ export default function DiaryForm({ setIsShowForm }: any) {
         <div className="flex flex-col">
           <label
             htmlFor="title"
-            className="text-sm text-center font-bold text-teal-600"
+            className="text-base text-center font-bold text-teal-600"
           >
             Event Title
           </label>
           <input
             id="title"
-            className="p-2 text-sm border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-teal-500"
+            className="p-2 text-base border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-teal-500"
             value={title}
             maxLength={50}
             minLength={1}
@@ -42,13 +42,13 @@ export default function DiaryForm({ setIsShowForm }: any) {
         <div className="flex flex-col">
           <label
             htmlFor="content"
-            className="text-sm text-center font-bold text-teal-600"
+            className="text-base text-center font-bold text-teal-600"
           >
             Event Content
           </label>
           <textarea
             id="content"
-            className="p-2 h-40 text-sm border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-teal-500"
+            className="p-2 h-40 text-base border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-teal-500"
             value={content}
             maxLength={400}
             minLength={1}
@@ -59,7 +59,7 @@ export default function DiaryForm({ setIsShowForm }: any) {
 
         <button
           type="submit"
-          className="py-2 px-4 text-sm bg-teal-500 text-white rounded-lg hover:bg-teal-700 transition-colors duration-200"
+          className="py-2 px-4 text-base bg-teal-500 text-white rounded-lg hover:bg-teal-700 transition-colors duration-200"
         >
           {isPending ? "Adding..." : "Add Event"}
         </button>

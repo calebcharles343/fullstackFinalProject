@@ -33,13 +33,13 @@ export default function EditDiaryForm({
         <div className="flex flex-col mb-4">
           <label
             htmlFor="title"
-            className="text-sm text-center font-bold text-teal-600"
+            className="text-base text-center font-bold text-teal-600"
           >
             Event Title
           </label>
           <input
             id="title"
-            className="p-2 text-sm border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-teal-500"
+            className="p-2 text-base border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-teal-500"
             value={title}
             maxLength={20}
             minLength={1}
@@ -50,13 +50,13 @@ export default function EditDiaryForm({
         <div className="flex flex-col mb-4">
           <label
             htmlFor="content"
-            className="text-sm text-center font-bold text-teal-600"
+            className="text-base text-center font-bold text-teal-600"
           >
             Event Content
           </label>
           <textarea
             id="content"
-            className="p-2 h-40 text-sm border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-teal-500"
+            className="p-2 h-40 text-base border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-teal-500"
             value={content}
             maxLength={400}
             minLength={1}
@@ -67,7 +67,7 @@ export default function EditDiaryForm({
 
         <button
           type="submit"
-          className="py-1 px-2 text-sm font-bold bg-teal-500 text-white rounded-lg"
+          className="py-1 px-2 text-base font-bold bg-teal-500 text-white rounded-lg"
         >
           {isPending ? "Updating" : "Update Event"}
         </button>
