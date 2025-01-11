@@ -96,16 +96,17 @@ export default function Entries() {
       </div>
 
       <div className="flex flex-col w-full items-center justify-center">
-        <div className="w-full max-w-[610px] lg:max-w-[910px] flex flex-col md:flex-row items-center justify-between p-2 md:p-4 -mb-2 md:-mb-4">
+        <div className="w-full lg:max-w-[910px] flex flex-col md:flex-row items-center justify-between px-2 md:px-6 ">
           <h2 className="text-xl md:text-2xl font-bold text-white">MY NOTES</h2>
 
-          <div className="lg:ml-20 relative w-full max-w-[285px]">
+          <div className="lg:ml-20 relative w-full max-w-[285px] md:max-w-[315px] lg:max-w-[285px]">
             <input
               type="text"
               placeholder="Search by title or content"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full p-1 text-base bg-rose-600 text-center text-white placeholder:text-white border-2 border-teal-500 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500"
+              className="w-full p-1 text-base bg-rose-600 text-center text-white placeholder:text-gray-200 border-2 border-teal-500 rounded-lg focus:outline-none focus:ring-1 focus:ring-teal-500"
+              style={{ fontWeight: "bold" }}
             />
 
             <span
@@ -139,9 +140,9 @@ export default function Entries() {
           </div>
         )}
         {filteredEvents.length > 0 && (
-          <div className="h-[478px] overflow-y-scroll mt-1">
+          <div className="h-[478px] overflow-y-scroll mt-1 md:mt-0">
             <div
-              className={`grid min-w-[300px] md:min-w-[610px] lg:w-[910px] lg:max-w-[910px]   gap-2 md:gap-2 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 p-2 md:p-4`}
+              className={`grid min-w-[300px] md:min-w-[610px] lg:w-[910px] lg:max-w-[910px]   gap-2 md:gap-2 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 p-2 md:p-4 md:pb-2`}
             >
               {filteredEvents?.map((entry: EventType, index: number) => (
                 <div
