@@ -62,12 +62,11 @@ export default function Entries() {
     <div className="flex flex-col items-center w-full gap-3 md:4 p-4 md:p-2">
       {isShowForm && (
         <Modal onClose={handleCloseModal}>
-          <div className="mt-4 bg-white shadow-lg">
+          <div className="mt-4 bg-white shadow-lg rounded-lg">
             <DiaryForm setIsShowForm={setIsShowForm} />
           </div>
         </Modal>
       )}
-
       <button
         className="flex items-center text-sm gap-2 px-2 md:px-3 py-1 md:py-2  font-bold text-teal-500 bg-white border rounded-lg hover:bg-blue-100"
         onClick={() => setIsShowForm(true)}
@@ -79,28 +78,30 @@ export default function Entries() {
           selected={searchDate}
           onChange={(date) => setSearchDate(date)}
           dateFormat="yyyy-MM-dd"
-          className="w-full p-2 text-center text-rose-500 bg-white border border-gray-500 focus:ring-2 focus:ring-teal-500 rounded-md"
+          className="w-full p-2 text-center text-rose-500 bg-white border border-gray-500 focus:ring-2 focus:ring-teal-500 rounded-md text-base" // Set font-size to at least 16px
           placeholderText="Date (yyyy-mm-dd)"
         />
       </div>
+
       <h2 className="text-xl  md:text-2xl font-bold text-white">MY EVENTS</h2>
-
-      <div
-        className={`grid w-full max-w-[610px] lg:max-w-[910px] gap-2 md:gap-2 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 p-2 md:p-4 `}
-      >
-        {filteredEvents?.map((entry: EventType, index: number) => (
-          <div
-            key={index}
-            onClick={() => {
-              setEventId(entry.id);
-              setIsShowEvent(true);
-            }}
-          >
-            <Entry entry={entry} />
-          </div>
-        ))}
-      </div>
-
+      {filteredEvents.length < 1 && <p>No Events Available</p>}
+      {filteredEvents.length > 0 && (
+        <div
+          className={`grid w-full max-w-[610px] lg:max-w-[910px] gap-2 md:gap-2 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 p-2 md:p-4 `}
+        >
+          {filteredEvents?.map((entry: EventType, index: number) => (
+            <div
+              key={index}
+              onClick={() => {
+                setEventId(entry.id);
+                setIsShowEvent(true);
+              }}
+            >
+              <Entry entry={entry} />
+            </div>
+          ))}
+        </div>
+      )}
       {isShowEvent && viewEvent && (
         <Modal onClose={handleCloseModal}>
           <div className="w-full max-w-[400px] mt-4 bg-white shadow-lg rounded-lg">

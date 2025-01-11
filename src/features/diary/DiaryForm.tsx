@@ -31,7 +31,7 @@ export default function DiaryForm({ setIsShowForm }: any) {
           </label>
           <input
             id="title"
-            className="p-2 text-xs border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-teal-500"
+            className="p-2 text-sm border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-teal-500"
             value={title}
             maxLength={50}
             minLength={1}
@@ -48,7 +48,7 @@ export default function DiaryForm({ setIsShowForm }: any) {
           </label>
           <textarea
             id="content"
-            className="p-2 h-40 text-xs border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-teal-500"
+            className="p-2 h-40 text-sm border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-teal-500"
             value={content}
             maxLength={400}
             minLength={1}

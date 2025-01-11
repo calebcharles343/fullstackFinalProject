@@ -28,7 +28,7 @@ export default function EditDiaryForm({
   };
 
   return (
-    <div className="border p-4 w-full md:w-[300px]  rounded-md self-center">
+    <div className="border p-4 w-full md:w-[300px] rounded-md self-center">
       <form onSubmit={handleSubmit} className="flex flex-col">
         <div className="flex flex-col mb-4">
           <label
@@ -39,7 +39,7 @@ export default function EditDiaryForm({
           </label>
           <input
             id="title"
-            className="p-2 text-xs border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-teal-500"
+            className="p-2 text-sm border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-teal-500"
             value={title}
             maxLength={20}
             minLength={1}
@@ -56,7 +56,7 @@ export default function EditDiaryForm({
           </label>
           <textarea
             id="content"
-            className="p-2 h-40 text-xs border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-teal-500"
+            className="p-2 h-40 text-sm border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-teal-500"
             value={content}
             maxLength={400}
             minLength={1}
@@ -67,7 +67,7 @@ export default function EditDiaryForm({
 
         <button
           type="submit"
-          className="py-1 px-2 text-xs font-bold bg-teal-500 text-white rounded-lg"
+          className="py-1 px-2 text-sm font-bold bg-teal-500 text-white rounded-lg"
         >
           {isPending ? "Updating" : "Update Event"}
         </button>
