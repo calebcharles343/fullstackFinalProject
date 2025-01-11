@@ -73,12 +73,12 @@ export default function Entries() {
       >
         Add Event <BiMessageAdd />
       </button>
-      <div className="relative flex flex-col items-center w-full max-w-[200px] text-sm border border-gray-500 rounded-lg focus-within:border-2 focus-within:border-teal-500">
+      <div className="relative flex flex-col items-center w-full max-w-[200px] bg-white text-sm border border-gray-500 rounded-lg focus-within:border-2 focus-within:border-teal-500">
         <ReactDatePicker
           selected={searchDate}
           onChange={(date) => setSearchDate(date)}
           dateFormat="yyyy-MM-dd"
-          className="w-full py-1 px-3 text-center text-rose-500 bg-white border-none focus:outline-none rounded-md text-base" // Set font-size to at least 16px and remove border
+          className="w-full py-1 px-3 text-center text-rose-500  border-none focus:outline-none rounded-md text-base" // Set font-size to at least 16px and remove border
           placeholderText="Date (yyyy-mm-dd)"
         />
 
