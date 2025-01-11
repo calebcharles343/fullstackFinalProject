@@ -6,6 +6,7 @@ import { BiEdit, BiTrash, BiCalendarPlus } from "react-icons/bi";
 import Modal from "../../ui/Modal";
 import { EventType } from "../../interfaces";
 import truncate from "truncate-html";
+import Swal from "sweetalert2";
 
 export default function Entry({
   entry,
@@ -27,13 +28,27 @@ export default function Entry({
     setIsCalendar(!isCalendar);
   };
 
-  const handleDeleteEntry = (e: any) => {
+  const handleDeleteEntry = (e: React.MouseEvent) => {
     e.stopPropagation();
-    deleteEntry(entry.id);
-    setIsEdit(false);
-    if (setIsShowEvent) {
-      setIsShowEvent(false);
-    }
+
+    Swal.fire({
+      title: "Are you sure?",
+      text: "Do you want to delete this entry?",
+      // icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+      customClass: { popup: "custom-style" },
+    }).then((result) => {
+      if (result.isConfirmed) {
+        deleteEntry(entry.id);
+        setIsEdit(false);
+        if (setIsShowEvent) {
+          setIsShowEvent(false);
+        }
+      }
+    });
   };
 
   const isValidDate = (date: any) => {
@@ -50,10 +65,11 @@ export default function Entry({
         >
           <div className="flex justify-between items-center mb-1">
             <h2 className={`text-base md:text-lg font-semibold break-words`}>
-              {truncate(entry.title, {
-                length: isShowEvent ? 25 : 15,
-                ellipsis: "...",
-              })}
+              {!isShowEvent &&
+                truncate(entry.title, {
+                  length: isShowEvent ? 25 : 15,
+                  ellipsis: "...",
+                })}
             </h2>
             <div className="flex gap-4">
               {isShowEvent && (
