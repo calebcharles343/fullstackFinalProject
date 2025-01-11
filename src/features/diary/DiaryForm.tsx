@@ -61,7 +61,7 @@ export default function DiaryForm({ setIsShowForm }: any) {
           type="submit"
           className="py-2 px-4 text-base bg-teal-500 text-white rounded-lg hover:bg-teal-700 transition-colors duration-200"
         >
-          {isPending ? "Adding..." : "Add Event"}
+          {isPending ? "Adding" : "Add Note"}
         </button>
       </form>
     </div>

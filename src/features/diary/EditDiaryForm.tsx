@@ -69,7 +69,7 @@ export default function EditDiaryForm({
           type="submit"
           className="py-1 px-2 text-base font-bold bg-teal-500 text-white rounded-lg"
         >
-          {isPending ? "Updating" : "Update Event"}
+          {isPending ? "Updating" : "Update Note"}
         </button>
       </form>
     </div>
