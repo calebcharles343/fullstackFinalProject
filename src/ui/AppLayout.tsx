@@ -12,7 +12,7 @@ export default function AppLayout() {
 
   return (
     <div className="flex flex-col h-screen bg-gradient-to-br from-rose-600 to-gray-950 font-roboto tracking-wide">
-      <header className="flex items-center justify-between bg-white shadow-md border-b-2 border-teal-500 px-4 py-2 top-0 z-10">
+      <header className="flex items-center justify-between bg-white shadow-md border-b-[3.5px] border-teal-500 px-4 py-2 top-0 z-10">
         <div className="container mx-auto">
           <h1
             className="text-lg md:text-xl font-bold text-teal-600"
@@ -38,7 +38,7 @@ export default function AppLayout() {
       <main className="flex-grow text-white overflow-y-scroll">
         <Outlet />
       </main>
-      <footer className="border-t-2 border-teal-500 bg-white text-center py-4 mt-auto">
+      <footer className="border-t-[3.5px] border-teal-500 bg-white text-center py-4 mt-auto">
         <p className="text-gray-800">
           &copy; 2025 My Diary App. All rights reserved.
         </p>

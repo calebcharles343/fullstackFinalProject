@@ -62,7 +62,7 @@ export default function Entries() {
   }
 
   return (
-    <div className="flex flex-col items-center w-full min-w-[300px] h-screen gap-3 p-4 md:p-2">
+    <div className="flex flex-col items-center w-full min-w-[300px] h-screen gap-3 p-4 md:p-2 ">
       {isShowForm && (
         <Modal onClose={handleCloseModal}>
           <div className="mt-4 bg-white shadow-lg rounded-lg">
@@ -78,7 +78,7 @@ export default function Entries() {
         >
           Add Note <BiMessageAdd />
         </button>
-        <div className="relative flex flex-col items-center w-full max-w-[200px] bg-white text-sm border border-gray-500 rounded-lg focus-within:border-2 focus-within:border-teal-500">
+        <div className="lg:hidden relative flex flex-col items-center w-full max-w-[200px] bg-white text-sm border border-gray-500 rounded-lg focus-within:border-2 focus-within:border-teal-500">
           <ReactDatePicker
             selected={searchDate}
             onChange={(date) => setSearchDate(date)}
@@ -96,16 +96,16 @@ export default function Entries() {
       </div>
 
       <div className="flex flex-col w-full items-center justify-center">
-        <div className=" w-full max-w-[610px] lg:max-w-[910px]  flex flex-col md:flex-row items-center justify-between  p-2 md:p-4 -mb-2 md:-mb-4 ">
+        <div className="w-full max-w-[610px] lg:max-w-[910px] flex flex-col md:flex-row items-center justify-between p-2 md:p-4 -mb-2 md:-mb-4">
           <h2 className="text-xl md:text-2xl font-bold text-white">MY NOTES</h2>
 
-          <div className="relative w-full max-w-[285px]">
+          <div className="lg:ml-20 relative w-full max-w-[285px]">
             <input
               type="text"
               placeholder="Search by title or content"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full  p-1  text-base bg-rose-600 text-center text-white placeholder:text-white border-2 border-teal-500 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500"
+              className="w-full p-1 text-base bg-rose-600 text-center text-white placeholder:text-white border-2 border-teal-500 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500"
             />
 
             <span
@@ -115,28 +115,46 @@ export default function Entries() {
               x
             </span>
           </div>
+
+          <div className="relative hidden lg:flex flex-col items-center w-full max-w-[200px] bg-white text-sm border border-gray-500 rounded-lg focus-within:border-2 focus-within:border-teal-500 ">
+            <ReactDatePicker
+              selected={searchDate}
+              onChange={(date) => setSearchDate(date)}
+              dateFormat="yyyy-MM-dd"
+              className="w-full py-1 px-3 text-center text-rose-500 border-none focus:outline-none rounded-md text-base"
+              placeholderText="Date (yyyy-mm-dd)"
+            />
+            <span
+              className="text-lg text-red-500 absolute right-2 top-1/2 transform -translate-y-1/2 cursor-pointer"
+              onClick={() => setSearchDate(null)}
+            >
+              x
+            </span>
+          </div>
         </div>
 
         {filteredEvents.length < 1 && (
-          <div className="mt-8 ">
+          <div className="mt-8">
             <p>No Events Available</p>
           </div>
         )}
         {filteredEvents.length > 0 && (
-          <div
-            className={`grid w-full max-w-[610px] lg:max-w-[910px] gap-2 md:gap-2 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 p-2 md:p-4`}
-          >
-            {filteredEvents?.map((entry: EventType, index: number) => (
-              <div
-                key={index}
-                onClick={() => {
-                  setEventId(entry.id);
-                  setIsShowEvent(true);
-                }}
-              >
-                <Entry entry={entry} />
-              </div>
-            ))}
+          <div className=" h-[564px] md:h-[478px]  overflow-y-scroll">
+            <div
+              className={` grid w-full max-w-[610px] lg:max-w-[910px]  gap-2 md:gap-2 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 p-2 md:p-4`}
+            >
+              {filteredEvents?.map((entry: EventType, index: number) => (
+                <div
+                  key={index}
+                  onClick={() => {
+                    setEventId(entry.id);
+                    setIsShowEvent(true);
+                  }}
+                >
+                  <Entry entry={entry} />
+                </div>
+              ))}
+            </div>
           </div>
         )}
       </div>

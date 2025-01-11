@@ -59,7 +59,9 @@ export default function Entry({
     <>
       {!isEdit && (
         <div
-          className={`flex flex-col w-full ${!isShowEvent && "h-[175px]"} ${
+          className={`flex flex-col w-full ${
+            !isShowEvent && "h-[130px] md:h-[144px]"
+          } ${
             isShowEvent && "md:w-[400px]"
           } text-gray-700 border-r-[5px] border-teal-500 rounded-lg shadow-lg p-3 md:p-4 bg-gradient-to-tr from-white to-red-50`}
         >
@@ -99,7 +101,7 @@ export default function Entry({
             </div>
           </div>
 
-          <div className="flex-grow overflow-hidden">
+          <div className=" flex-grow overflow-hidden">
             <div className={`md:text-sm overflow-y-hidden overflow-x-hidden`}>
               {isShowEvent && (
                 <h2 className="text-base md:text-lg  font-semibold break-words mb-2">
