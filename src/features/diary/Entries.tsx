@@ -73,7 +73,7 @@ export default function Entries() {
       >
         Add Event <BiMessageAdd />
       </button>
-      <div className="flex flex-col items-center w-full max-w-[200px] text-sm">
+      <div className="relative flex flex-col items-center w-full max-w-[200px] text-sm">
         <ReactDatePicker
           selected={searchDate}
           onChange={(date) => setSearchDate(date)}
@@ -81,6 +81,14 @@ export default function Entries() {
           className="w-full p-2 text-center text-rose-500 bg-white border border-gray-500 focus:ring-2 focus:ring-teal-500 rounded-md text-base" // Set font-size to at least 16px
           placeholderText="Date (yyyy-mm-dd)"
         />
+
+        <span
+          className="text-xl text-red-500 absolute right-3 top-1/2 transform -translate-y-1/2 cursor-pointer"
+          onClick={() => setSearchDate(null)}
+        >
+          {" "}
+          x
+        </span>
       </div>
 
       <h2 className="text-xl  md:text-2xl font-bold text-white">MY EVENTS</h2>
