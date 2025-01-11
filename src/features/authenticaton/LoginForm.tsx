@@ -39,12 +39,17 @@ const LoginForm: React.FC = () => {
       style={{ fontFamily: "Roboto", letterSpacing: "0.8px" }}
     >
       <div className=" mb-4 flex flex-col items-center">
-        <h1 className="text-sm md:text-lg font-extrabold">MY DIARY APP</h1>
+        <h1
+          className=" md:text-lg font-extrabold"
+          style={{ fontFamily: "Poppins", letterSpacing: "0.8px" }}
+        >
+          TUNGA DEVELOPER DIARY
+        </h1>
       </div>
       <div className="w-full md:w-[400px] flex items-center justify-center">
         <form
           onSubmit={handleSubmit}
-          className="flex flex-col items-center gap-4 sm:gap-6 md:gap-8 lg:gap-10 w-full max-w-md bg-white bg-opacity-70 p-6 rounded-md shadow-xl backdrop-blur-lg  mx-4 md:mx-0"
+          className="flex flex-col items-center gap-4 sm:gap-6 md:gap-8 lg:gap-10 w-full max-w-md bg-white bg-opacity-80 p-6 rounded-md shadow-xl backdrop-blur-lg  mx-4 md:mx-0"
         >
           <div className="flex flex-col w-full gap-4">
             <div>

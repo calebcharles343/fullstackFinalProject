@@ -14,7 +14,12 @@ export default function AppLayout() {
     <div className="flex flex-col h-screen bg-gradient-to-br from-rose-600 to-gray-950 font-roboto tracking-wide">
       <header className="flex items-center justify-between bg-white shadow-md border-b-2 border-teal-500 px-4 py-2 top-0 z-10">
         <div className="container mx-auto">
-          <h1 className="text-xl font-bold text-teal-600">My Diary App</h1>
+          <h1
+            className="text-lg md:text-xl font-bold text-teal-600"
+            style={{ fontFamily: "Poppins", letterSpacing: "0.8px" }}
+          >
+            Tunga Dev Diary
+          </h1>
         </div>
         <div className="flex justify-center items-center h-10 w-[115px] border ml-2 md:ml-0 shadow-lg hover:bg-gray-800 hover:text-gray-50 transition-colors duration-200">
           {isPending ? (

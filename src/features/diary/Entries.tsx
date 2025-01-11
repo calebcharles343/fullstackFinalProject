@@ -73,7 +73,7 @@ export default function Entries() {
           className="flex items-center text-sm gap-2 px-2 md:px-3 py-1 md:py-2  font-bold text-teal-500 bg-white border rounded-lg hover:bg-blue-100"
           onClick={() => setIsShowForm(true)}
         >
-          Add Event <BiMessageAdd />
+          Add Note <BiMessageAdd />
         </button>
         <div className="relative flex flex-col items-center w-full max-w-[200px] bg-white text-sm border border-gray-500 rounded-lg focus-within:border-2 focus-within:border-teal-500">
           <ReactDatePicker
@@ -94,7 +94,7 @@ export default function Entries() {
       </div>
 
       <div className="flex flex-col w-full  items-center justify-center ">
-        <h2 className="text-xl md:text-2xl font-bold text-white">MY EVENTS</h2>
+        <h2 className="text-xl md:text-2xl font-bold text-white">MY NOTES</h2>
         {filteredEvents.length < 1 && (
           <div>
             <p>No Events Available</p>

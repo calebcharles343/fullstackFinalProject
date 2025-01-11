@@ -27,7 +27,7 @@ export default function DiaryForm({ setIsShowForm }: any) {
             htmlFor="title"
             className="text-base text-center font-bold text-teal-600"
           >
-            Event Title
+            Note Title
           </label>
           <input
             id="title"
@@ -44,7 +44,7 @@ export default function DiaryForm({ setIsShowForm }: any) {
             htmlFor="content"
             className="text-base text-center font-bold text-teal-600"
           >
-            Event Content
+            Note Content
           </label>
           <textarea
             id="content"
