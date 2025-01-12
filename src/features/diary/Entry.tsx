@@ -89,7 +89,7 @@ export default function Entry({
 
                   <button
                     onClick={handleToggleCalendar}
-                    className="py-1 text-lg text-blue-500 transition-colors 
+                    className="py-1 text-lg text-[#052859] transition-colors 
                     hover:text-blue-700"
                   >
                     <BiCalendarPlus />

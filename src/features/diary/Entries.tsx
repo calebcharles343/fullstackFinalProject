@@ -103,7 +103,7 @@ export default function Entries() {
             onChange={(date) => setSearchDate(date)}
             dateFormat="yyyy-MM-dd"
             className="w-full py-1 px-3 text-center text-rose-500 border-none focus:outline-none rounded-md text-base" // Set font-size to at least 16px and remove border
-            placeholderText="Date (yyyy-mm-dd)"
+            placeholderText="Date - yyyy-mm-dd"
           />
           <span
             className="text-lg text-red-500 absolute right-2 top-1/2 transform -translate-y-1/2 cursor-pointer"
