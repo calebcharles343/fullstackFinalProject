@@ -46,7 +46,7 @@ export default function AppLayout() {
         <Outlet />
       </main>
       <footer className="border-t-[3.5px] border-[#052859] bg-white text-center py-4 mt-auto">
-        <p className="text-[#052859] ">
+        <p className="text-[#052859] text-sm md:text-base">
           &copy; 2025 Tunga <span className="md:hidden">Dev</span>{" "}
           <span className="hidden md:inline">Developer</span> Diary. All rights
           reserved.
