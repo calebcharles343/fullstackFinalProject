@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
 import SpinnerMini from "../../ui/SpinnerMini";
 import Modal from "../../ui/Modal";
 import DiaryForm from "./DiaryForm";
@@ -11,21 +12,17 @@ import ReactDatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
 export default function Entries() {
-  // State variables to manage form visibility, event visibility, event ID, and view event
   const [isShowForm, setIsShowForm] = useState(false);
   const [isShowEvent, setIsShowEvent] = useState<true | false>(false);
   const [eventId, setEventId] = useState<string | null>(null);
   const [viewEvent, setViewEvent] = useState<EventType | null>(null);
 
-  // State variables for search functionality
   const [searchDate, setSearchDate] = useState<Date | null>(null);
   const [searchQuery, setSearchQuery] = useState<string>("");
   const [filteredEvents, setFilteredEvents] = useState<EventType[]>([]);
 
-  // Fetch entries data using custom hook
   const { data, isLoading } = useEntries();
 
-  // Filter and sort events based on search criteria
   useEffect(() => {
     if (data) {
       const filtered = data.data
@@ -45,13 +42,11 @@ export default function Entries() {
     }
   }, [searchDate, searchQuery, data?.data]);
 
-  // Close modal handler
   const handleCloseModal = () => {
     setIsShowForm(false);
     setIsShowEvent(false);
   };
 
-  // Set view event based on selected event ID
   useEffect(() => {
     if (eventId) {
       const currentEvent = filteredEvents.find((event) => event.id === eventId);
@@ -59,31 +54,30 @@ export default function Entries() {
     }
   }, [eventId, filteredEvents]);
 
-  // Show loading spinner while data is being fetched
   if (isLoading) {
     return (
-      <div
-        className="flex items-center justify-center w-full h-full text-white 
-      backdrop-blur-sm"
-      >
+      <div className="flex items-center justify-center w-full h-full text-white backdrop-blur-sm">
         <SpinnerMini />
       </div>
     );
   }
 
   return (
-    <div
-      className="flex flex-col items-center w-full min-w-[300px] h-screen gap-3 
-    p-4 md:p-2 "
-    >
-      {isShowForm && (
-        <Modal onClose={handleCloseModal}>
-          <div className="mt-4 bg-white shadow-lg rounded-lg">
-            <DiaryForm setIsShowForm={setIsShowForm} />
-          </div>
-        </Modal>
-      )}
-
+    <div className="flex flex-col items-center w-full min-w-[300px] h-screen gap-3 p-4 md:p-2">
+      <AnimatePresence>
+        {isShowForm && (
+          <Modal onClose={handleCloseModal}>
+            <motion.div
+              className="mt-4 bg-white shadow-lg rounded-lg"
+              initial={{ opacity: 0, y: -50 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: 50 }}
+            >
+              <DiaryForm setIsShowForm={setIsShowForm} />
+            </motion.div>
+          </Modal>
+        )}
+      </AnimatePresence>
       <div className="flex flex-col items-center justify-center gap-3">
         <button
           className="flex items-center text-sm gap-2 px-2 md:px-3 py-1 md:py-2 
@@ -176,46 +170,63 @@ export default function Entries() {
         </div>
 
         {filteredEvents.length < 1 && (
-          <div className="mt-8">
-            <p>No Events Available</p>
-          </div>
-        )}
-        {filteredEvents.length > 0 && (
-          <div
-            className="w-full min-w-[300px] md:min-w-[610px] lg:w-[910px] 
-          lg:max-w-[910px] h-[478px] overflow-y-scroll mt-1 md:mt-0 rounded-3xl"
+          <motion.div
+            className="mt-8"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
           >
-            <div
-              className={`w-full grid  gap-2 md:gap-2 grid-cols-1 md:grid-cols-2 
-              lg:grid-cols-3 p-2 md:p-4 md:pb-2  rounded-3xl`}
-            >
-              {filteredEvents?.map((entry: EventType, index: number) => (
-                <div
-                  key={index}
-                  onClick={() => {
-                    setEventId(entry.id);
-                    setIsShowEvent(true);
-                  }}
-                >
-                  <Entry entry={entry} />
-                </div>
-              ))}
-            </div>
-          </div>
+            <p>No Events Available</p>
+          </motion.div>
         )}
+
+        <motion.div
+          className="w-full min-w-[300px] md:min-w-[610px] lg:w-[910px] lg:max-w-[910px] h-[478px] overflow-y-scroll mt-1 md:mt-0 rounded-3xl"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+        >
+          <motion.div
+            className="w-full grid gap-2 md:gap-2 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 p-2 md:p-4 md:pb-2 rounded-3xl"
+            layout
+          >
+            {filteredEvents?.map((entry: EventType, index: number) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 50 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -50 }}
+                transition={{ duration: 0.3 }}
+                onClick={() => {
+                  setEventId(entry.id);
+                  setIsShowEvent(true);
+                }}
+              >
+                <Entry entry={entry} />
+              </motion.div>
+            ))}
+          </motion.div>
+        </motion.div>
       </div>
 
-      {isShowEvent && viewEvent && (
-        <Modal onClose={handleCloseModal}>
-          <div className="w-full max-w-[400px] mt-4  rounded-lg">
-            <Entry
-              entry={viewEvent}
-              isShowEvent={isShowEvent}
-              setIsShowEvent={setIsShowEvent}
-            />
-          </div>
-        </Modal>
-      )}
+      <AnimatePresence>
+        {isShowEvent && viewEvent && (
+          <Modal onClose={handleCloseModal}>
+            <motion.div
+              className="w-full max-w-[400px] mt-4 rounded-lg"
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.9 }}
+            >
+              <Entry
+                entry={viewEvent}
+                isShowEvent={isShowEvent}
+                setIsShowEvent={setIsShowEvent}
+              />
+            </motion.div>
+          </Modal>
+        )}
+      </AnimatePresence>
     </div>
   );
 }
