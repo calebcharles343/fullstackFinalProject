@@ -6,7 +6,7 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: #2ed1c1; /* Change the color as needed */
+  background-color: #fff; /* Change the color as needed */
   border-radius: 10px; /* Optional: Add rounded corners */
 }
 

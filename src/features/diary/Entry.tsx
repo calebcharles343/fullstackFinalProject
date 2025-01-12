@@ -63,8 +63,10 @@ export default function Entry({
             !isShowEvent && "h-[130px] md:h-[144px]"
           } ${
             isShowEvent && "md:w-[400px]"
-          } text-gray-700 border-r-[5px] border-teal-500 rounded-lg shadow-lg p-3
-           md:p-4 bg-gradient-to-tr from-white to-red-50`}
+          } text-gray-700 border-r-[5px] border-[#DC3340] rounded-lg p-3
+           md:p-4 bg-gradient-to-tr from-white 
+           to-red-50 
+           shadow-[0_4px_6px_-1px_#ffebee5f,0_2px_4px_-1px_#ffebeea6]`}
         >
           <div className="flex justify-between items-center mb-1">
             <h2 className={`text-base md:text-lg font-semibold break-words`}>
@@ -139,7 +141,7 @@ export default function Entry({
               </span>
             </a>
 
-            <span className=" text-xs text-[#DC3340] font-bold ">
+            <span className=" text-xs text-gray-600 font-bold ">
               {isValidDate(entry?.createdAt)
                 ? dateformat(entry?.createdAt)
                 : "Invalid date"}

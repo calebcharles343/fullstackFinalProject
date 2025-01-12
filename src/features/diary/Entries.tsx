@@ -87,7 +87,7 @@ export default function Entries() {
       <div className="flex flex-col items-center justify-center gap-3">
         <button
           className="flex items-center text-sm gap-2 px-2 md:px-3 py-1 md:py-2 
-          font-bold text-teal-500 bg-white border rounded-lg hover:bg-blue-100"
+          font-bold text-[#052859] bg-white border rounded-lg hover:bg-blue-100"
           onClick={() => setIsShowForm(true)}
         >
           Add Note <BiMessageAdd />
@@ -135,7 +135,7 @@ export default function Entries() {
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               className="w-full p-1 text-base bg-rose-600 text-center text-white
-               placeholder:text-gray-200 border-2 border-teal-500 rounded-lg 
+               placeholder:text-gray-200 border-2 border-gray-50 rounded-lg 
                focus:outline-none focus:ring-1 focus:ring-teal-500"
               style={{ fontWeight: "bold" }}
             />
