@@ -181,17 +181,16 @@ export default function Entry({
             }}
           />
           <iframe
-            src="https://calendar.google.com/calendar/embed?src=calebcharles343%40gmail
-            .com&ctz=Africa%2FLagos"
+            src="https://calendar.google.com/calendar/embed?"
             style={{
               position: "absolute",
               top: 0,
               left: 0,
-              width: "144%", // Increase width to compensate for scaling
-              height: "145%", // Increase height to compensate for scaling
+              width: "144%",
+              height: "145%",
               border: 0,
-              transform: "scale(0.70)", // Scale content down
-              transformOrigin: "top left", // Scale from top-left
+              transform: "scale(0.70)",
+              transformOrigin: "top left",
             }}
             frameBorder="0"
             scrolling="no"
