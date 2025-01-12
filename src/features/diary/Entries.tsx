@@ -178,10 +178,12 @@ export default function Entries() {
           </div>
         )}
         {filteredEvents.length > 0 && (
-          <div className="w-full h-[478px] overflow-y-scroll mt-1 md:mt-0 rounded-3xl">
+          <div
+            className="w-full min-w-[300px] md:min-w-[610px] lg:w-[910px] 
+          lg:max-w-[910px] h-[478px] overflow-y-scroll mt-1 md:mt-0 rounded-3xl"
+          >
             <div
-              className={`w-full grid min-w-[300px] md:min-w-[610px] lg:w-[910px] 
-              lg:max-w-[910px] gap-2 md:gap-2 grid-cols-1 md:grid-cols-2 
+              className={`w-full grid  gap-2 md:gap-2 grid-cols-1 md:grid-cols-2 
               lg:grid-cols-3 p-2 md:p-4 md:pb-2  rounded-3xl`}
             >
               {filteredEvents?.map((entry: EventType, index: number) => (

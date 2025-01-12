@@ -41,7 +41,7 @@ export default function EditDiaryForm({
             id="title"
             className="p-2 text-base border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-teal-500"
             value={title}
-            maxLength={20}
+            maxLength={50}
             minLength={1}
             onChange={(e) => setTitle(e.target.value)}
             required
