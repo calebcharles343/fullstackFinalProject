@@ -8,6 +8,24 @@ import { EventType } from "../../interfaces";
 import truncate from "truncate-html";
 import Swal from "sweetalert2";
 
+// import { GoogleOAuthProvider, useGoogleLogin } from "@react-oauth/google";
+
+// const Login = () => {
+//   const login = useGoogleLogin({
+//     onSuccess: (tokenResponse) => {
+//       console.log(tokenResponse);
+//       // Save the token for API calls
+//     },
+//     onError: () => console.log("Login failed"),
+//   });
+
+//   return <button onClick={() => login()}>Sign in with Google</button>;
+// };
+
+// <GoogleOAuthProvider clientId="<709326677914-9i9bc88r4ciau6ugc8k8q3s6lc835mka.apps.googleusercontent.com>">
+//   <Login />
+// </GoogleOAuthProvider>;
+
 export default function Entry({
   entry,
   isShowEvent,
@@ -181,7 +199,7 @@ export default function Entry({
             }}
           />
           <iframe
-            src="https://calendar.google.com/calendar/embed?"
+            src="https://calendar.google.com/calendar/embed?src=your-calendar-id@group.calendar.google.com&ctz=America/New_York"
             style={{
               position: "absolute",
               top: 0,
