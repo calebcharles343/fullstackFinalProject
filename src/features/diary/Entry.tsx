@@ -141,7 +141,7 @@ export default function Entry({
               </span>
             </a>
 
-            <span className=" text-xs text-gray-600 font-bold ">
+            <span className=" text-xs text-[#052859] font-bold ">
               {isValidDate(entry?.createdAt)
                 ? dateformat(entry?.createdAt)
                 : "Invalid date"}
