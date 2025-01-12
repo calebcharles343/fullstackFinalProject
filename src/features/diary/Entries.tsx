@@ -137,7 +137,7 @@ export default function Entries() {
               placeholder="Search by title or content"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full p-1 text-base bg-rose-600 text-center text-white
+              className="w-full p-1 text-base bg-[#DC3340] text-center text-white
                placeholder:text-gray-200 border-2 border-gray-50 rounded-lg 
                focus:outline-none focus:ring-1 focus:ring-red-50"
               style={{ fontWeight: "bold" }}

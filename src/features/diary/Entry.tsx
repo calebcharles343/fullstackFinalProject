@@ -1,3 +1,4 @@
+import { AnimatePresence, motion } from "framer-motion";
 import { useState, Dispatch, SetStateAction, useEffect } from "react";
 import { dateformat } from "../../utils/dateFormat";
 import { useDeleteEntry } from "./useDeleteEntry";
@@ -48,7 +49,6 @@ export default function Entry({
     Swal.fire({
       title: "Are you sure?",
       text: "Do you want to delete this entry?",
-      // icon: "warning",
       showCancelButton: true,
       confirmButtonColor: "#052859",
       cancelButtonColor: "#d33",
@@ -78,120 +78,147 @@ export default function Entry({
 
   return (
     <>
-      {!isEdit && (
-        <div
-          className={`flex flex-col w-full ${
-            !isShowEvent && "h-[130px] md:h-[144px]"
-          } ${
-            isShowEvent && "md:w-[400px]"
-          } text-gray-700 border-r-[5px] border-[#DC3340] rounded-lg p-3
-           md:p-4 bg-gradient-to-tr from-white 
-           to-red-50 
-           shadow-[0_4px_6px_-1px_#77656830,0_2px_4px_-1px_#ffebee5d]`}
-          style={{ fontFamily: "Roboto", letterSpacing: "0.8px" }}
-        >
-          <div className="flex justify-between items-center mb-1">
-            <h2 className={`text-base md:text-lg font-semibold break-words`}>
-              {!isShowEvent &&
-                truncate(entry.title, {
-                  length: isShowEvent ? 25 : 15,
-                  ellipsis: "...",
-                })}
-            </h2>
-            <div className="flex gap-4">
-              {isShowEvent && (
-                <div className="flex items-center gap-4">
-                  <button
-                    className="py-1 text-lg text-teal-500 transition-colors 
-                    hover:text-teal-700"
-                    onClick={handleToggleEdit}
-                  >
-                    {isEdit ? "Cancel" : <BiEdit />}
-                  </button>
+      <AnimatePresence>
+        {!isEdit && (
+          <motion.div
+            className={`flex flex-col w-full ${
+              !isShowEvent && "h-[130px] md:h-[144px]"
+            } ${
+              isShowEvent && "md:w-[400px]"
+            } text-gray-700 border-r-[5px] border-[#DC3340] rounded-lg p-3
+              md:p-4 bg-gradient-to-tr from-white to-red-50
+              shadow-[0_4px_6px_-1px_#77656830,0_2px_4px_-1px_#ffebee5d]`}
+            style={{ fontFamily: "Roboto", letterSpacing: "0.8px" }}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 20 }}
+            transition={{ duration: 0.3 }}
+          >
+            <div className="flex justify-between items-center mb-1">
+              <h2 className={`text-base md:text-lg font-semibold break-words`}>
+                {!isShowEvent &&
+                  truncate(entry.title, {
+                    length: isShowEvent ? 25 : 15,
+                    ellipsis: "...",
+                  })}
+              </h2>
+              <div className="flex gap-4">
+                {isShowEvent && (
+                  <div className="flex items-center gap-4">
+                    <button
+                      className="py-1 text-lg text-teal-500 transition-colors hover:text-teal-700"
+                      onClick={handleToggleEdit}
+                    >
+                      {isEdit ? "Cancel" : <BiEdit />}
+                    </button>
 
-                  <button
-                    onClick={handleToggleCalendar}
-                    className="py-1 text-lg text-[#052859] transition-colors 
-                    hover:text-blue-700"
-                  >
-                    <BiCalendarPlus />
-                  </button>
-                </div>
-              )}
+                    <button
+                      onClick={handleToggleCalendar}
+                      className="py-1 text-lg text-[#052859] transition-colors hover:text-blue-700"
+                    >
+                      <BiCalendarPlus />
+                    </button>
+                  </div>
+                )}
 
-              <button
-                className="py-1 text-lg text-red-500 transition-colors 
-                hover:text-red-700"
-                onClick={handleDeleteEntry}
-              >
-                {isDeleting ? "..." : <BiTrash />}
-              </button>
-            </div>
-          </div>
-
-          <div className="flex-grow  overflow-hidden">
-            <div className={`md:text-sm overflow-y-hidden overflow-x-hidden`}>
-              {isShowEvent && (
-                <h2 className="text-base md:text-lg  font-semibold break-words mb-2">
-                  {entry.title}
-                </h2>
-              )}
-
-              {!isShowEvent && (
-                <p
-                  className={`text-[13px] md:text-[14px]`}
-                  style={{ lineHeight: "1.4" }}
+                <button
+                  className="py-1 text-lg text-red-500 transition-colors hover:text-red-700"
+                  onClick={handleDeleteEntry}
                 >
-                  {entry.content}
-                </p>
-              )}
-              {isShowEvent && (
-                <p
-                  className={`text-sm md:text-base"}`}
-                  style={{ lineHeight: "1.3" }}
-                >
-                  {entry.content}
-                </p>
-              )}
+                  {isDeleting ? "..." : <BiTrash />}
+                </button>
+              </div>
             </div>
-          </div>
 
-          <div className="relative flex items-center justify-between -mb-1 ">
-            <div>
-              <span
-                className="inline-flex items-center text-xs text-[#DC3340] font-semibold gap-1"
-                onClick={handleToggleisTunga}
-              >
-                TUNGA {isTunga ? <BiUpArrow /> : <BiDownArrow />}
+            <div className="flex-grow overflow-hidden">
+              <div className={`md:text-sm overflow-y-hidden overflow-x-hidden`}>
+                {isShowEvent && (
+                  <h2 className="text-base md:text-lg font-semibold break-words mb-2">
+                    {entry.title}
+                  </h2>
+                )}
+
+                {!isShowEvent && (
+                  <p
+                    className={`text-[13px] md:text-[14px]`}
+                    style={{ lineHeight: "1.4" }}
+                  >
+                    {entry.content}
+                  </p>
+                )}
+                {isShowEvent && (
+                  <p
+                    className={`text-sm md:text-base"}`}
+                    style={{ lineHeight: "1.3" }}
+                  >
+                    {entry.content}
+                  </p>
+                )}
+              </div>
+            </div>
+
+            <div className="relative flex items-center justify-between -mb-1">
+              <div>
+                <span
+                  className="inline-flex items-center text-xs text-[#DC3340] font-semibold gap-1"
+                  onClick={handleToggleisTunga}
+                >
+                  TUNGA {isTunga ? <BiUpArrow /> : <BiDownArrow />}
+                </span>
+              </div>
+
+              {isTunga && <Links />}
+
+              <span className="text-xs text-[#052859] font-bold">
+                {isValidDate(entry?.createdAt)
+                  ? dateformat(entry?.createdAt)
+                  : "Invalid date"}
               </span>
             </div>
-
-            {isTunga && <Links />}
-
-            <span className=" text-xs text-[#052859] font-bold ">
-              {isValidDate(entry?.createdAt)
-                ? dateformat(entry?.createdAt)
-                : "Invalid date"}
-            </span>
-          </div>
-        </div>
-      )}
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       {isEdit && (
         <Modal onClose={handleToggleEdit}>
-          <div className="mt-4 bg-white shadow-lg rounded-lg">
+          <motion.div
+            className="mt-4 bg-white shadow-lg rounded-lg"
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.95 }}
+            transition={{ duration: 0.3 }}
+          >
             <EditDiaryForm
               entry={entry}
               setIsEdit={setIsEdit}
               setIsShowEvent={setIsShowEvent}
             />
-          </div>
+          </motion.div>
         </Modal>
       )}
 
-      {isTunga && !isCalendar && <div className="h-10 w-[100px]"></div>}
+      {isTunga && !isCalendar && (
+        <motion.div
+          className="h-10 w-[100px]"
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={{ opacity: 1, scale: 1 }}
+          exit={{ opacity: 0, scale: 0.95 }}
+          transition={{ duration: 0.3 }}
+        />
+      )}
 
-      {isShowEvent && isCalendar && <Calendar />}
+      <AnimatePresence>
+        {isShowEvent && isCalendar && (
+          <motion.div
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.3 }}
+          >
+            <Calendar />
+          </motion.div>
+        )}
+      </AnimatePresence>
     </>
   );
 }
