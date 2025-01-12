@@ -13,12 +13,19 @@ export default function AppLayout() {
   return (
     <div className="flex flex-col h-screen bg-gradient-to-br from-rose-600 to-gray-950 font-roboto tracking-wide">
       <header className="flex items-center justify-between bg-white shadow-md border-b-[3.5px] border-teal-500 px-4 py-2 top-0 z-10">
-        <div className="container mx-auto">
+        <div className="container flex items-center gap-2 mx-auto">
+          <div
+            className="flex items-center justify-center h-11 w-11 border-2 
+          p-2 bg-[#DC3340] text-white rounded-full"
+          >
+            <span className="text-[8px] font-extrabold">TUNGA</span>
+          </div>
           <h1
             className="text-lg md:text-xl font-bold text-teal-600"
             style={{ fontFamily: "Poppins", letterSpacing: "0.8px" }}
           >
-            Tunga Dev Diary
+            <span className="md:hidden">Dev</span>{" "}
+            <span className="hidden md:inline">Developer</span> Diary
           </h1>
         </div>
         <div className="flex justify-center items-center h-10 w-[115px] border ml-2 md:ml-0 shadow-lg hover:bg-gray-800 hover:text-gray-50 transition-colors duration-200">
@@ -39,8 +46,10 @@ export default function AppLayout() {
         <Outlet />
       </main>
       <footer className="border-t-[3.5px] border-teal-500 bg-white text-center py-4 mt-auto">
-        <p className="text-gray-800">
-          &copy; 2025 My Diary App. All rights reserved.
+        <p className="text-gray-800 ">
+          &copy; 2025 Tunga <span className="md:hidden">Dev</span>{" "}
+          <span className="hidden md:inline">Developer</span> Diary. All rights
+          reserved.
         </p>
       </footer>
     </div>

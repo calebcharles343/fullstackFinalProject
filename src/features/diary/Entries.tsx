@@ -11,17 +11,21 @@ import ReactDatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
 export default function Entries() {
+  // State variables to manage form visibility, event visibility, event ID, and view event
   const [isShowForm, setIsShowForm] = useState(false);
   const [isShowEvent, setIsShowEvent] = useState<true | false>(false);
   const [eventId, setEventId] = useState<string | null>(null);
   const [viewEvent, setViewEvent] = useState<EventType | null>(null);
 
+  // State variables for search functionality
   const [searchDate, setSearchDate] = useState<Date | null>(null);
   const [searchQuery, setSearchQuery] = useState<string>("");
   const [filteredEvents, setFilteredEvents] = useState<EventType[]>([]);
 
+  // Fetch entries data using custom hook
   const { data, isLoading } = useEntries();
 
+  // Filter and sort events based on search criteria
   useEffect(() => {
     if (data) {
       const filtered = data.data
@@ -41,11 +45,13 @@ export default function Entries() {
     }
   }, [searchDate, searchQuery, data?.data]);
 
+  // Close modal handler
   const handleCloseModal = () => {
     setIsShowForm(false);
     setIsShowEvent(false);
   };
 
+  // Set view event based on selected event ID
   useEffect(() => {
     if (eventId) {
       const currentEvent = filteredEvents.find((event) => event.id === eventId);
@@ -53,6 +59,7 @@ export default function Entries() {
     }
   }, [eventId, filteredEvents]);
 
+  // Show loading spinner while data is being fetched
   if (isLoading) {
     return (
       <div
@@ -85,6 +92,7 @@ export default function Entries() {
         >
           Add Note <BiMessageAdd />
         </button>
+
         <div
           className="lg:hidden relative flex flex-col items-center 
         w-full max-w-[200px] bg-white text-sm border border-gray-500 rounded-lg 
@@ -170,11 +178,11 @@ export default function Entries() {
           </div>
         )}
         {filteredEvents.length > 0 && (
-          <div className="h-[478px] overflow-y-scroll mt-1 md:mt-0 rounded-3xl">
+          <div className="w-full h-[478px] overflow-y-scroll mt-1 md:mt-0 rounded-3xl">
             <div
-              className={`grid min-w-[300px] md:min-w-[610px] lg:w-[910px] 
-              lg:max-w-[910px]   gap-2 md:gap-2 grid-cols-1 md:grid-cols-2 
-              lg:grid-cols-3 p-2 md:p-4 md:pb-2`}
+              className={`w-full grid min-w-[300px] md:min-w-[610px] lg:w-[910px] 
+              lg:max-w-[910px] gap-2 md:gap-2 grid-cols-1 md:grid-cols-2 
+              lg:grid-cols-3 p-2 md:p-4 md:pb-2  rounded-3xl`}
             >
               {filteredEvents?.map((entry: EventType, index: number) => (
                 <div

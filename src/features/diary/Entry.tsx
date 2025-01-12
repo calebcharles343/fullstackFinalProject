@@ -105,7 +105,7 @@ export default function Entry({
             </div>
           </div>
 
-          <div className=" flex-grow overflow-hidden">
+          <div className="flex-grow  overflow-hidden">
             <div className={`md:text-sm overflow-y-hidden overflow-x-hidden`}>
               {isShowEvent && (
                 <h2 className="text-base md:text-lg  font-semibold break-words mb-2">
@@ -132,11 +132,19 @@ export default function Entry({
             </div>
           </div>
 
-          <span className="mt-2 text-xs text-rose-500 font-bold text-right">
-            {isValidDate(entry?.createdAt)
-              ? dateformat(entry?.createdAt)
-              : "Invalid date"}
-          </span>
+          <div className="flex items-center justify-between -mb-1 ">
+            <a href="https://tunga.platform.co.nl/">
+              <span className="text-xs text-[#DC3340] font-semibold hover:underline">
+                TUNGA
+              </span>
+            </a>
+
+            <span className=" text-xs text-[#DC3340] font-bold ">
+              {isValidDate(entry?.createdAt)
+                ? dateformat(entry?.createdAt)
+                : "Invalid date"}
+            </span>
+          </div>
         </div>
       )}
 
