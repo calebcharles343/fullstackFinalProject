@@ -120,7 +120,7 @@ export default function Entries() {
         items-center justify-between px-2 md:px-6 "
         >
           <div className="w-full ">
-            <h2 className="text-xl  md:text-2xl font-bold text-white">
+            <h2 className="text-xl text-center md:text-start md:text-2xl font-bold text-white">
               MY NOTES
             </h2>
           </div>
