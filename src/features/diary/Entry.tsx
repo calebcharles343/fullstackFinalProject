@@ -13,6 +13,8 @@ import Modal from "../../ui/Modal";
 import { EventType } from "../../interfaces";
 import truncate from "truncate-html";
 import Swal from "sweetalert2";
+import Calendar from "../../ui/Calendar";
+import Links from "../../ui/Links";
 
 export default function Entry({
   entry,
@@ -86,7 +88,6 @@ export default function Entry({
            md:p-4 bg-gradient-to-tr from-white 
            to-red-50 
            shadow-[0_4px_6px_-1px_#77656830,0_2px_4px_-1px_#ffebee5d]`}
-          style={{ fontFamily: "Roboto", letterSpacing: "0.8px" }}
         >
           <div className="flex justify-between items-center mb-1">
             <h2 className={`text-base md:text-lg font-semibold break-words`}>
@@ -164,22 +165,7 @@ export default function Entry({
               </span>
             </div>
 
-            {isTunga && (
-              <div
-                className="absolute top-full mt-1 flex flex-col gap-1 bg-white w-1/2 
-    text-xs py-1 px-2 rounded-md border border-gray-500 shadow-lg z-[1000]"
-              >
-                <a href="https://tunga.platform.co.nl/" target="_blank">
-                  <span className="hover:underline">TIA - Dashboard</span>
-                </a>
-                <a
-                  href="https://www.linkedin.com/company/tunga"
-                  target="_blank"
-                >
-                  <span className="hover:underline">Tunga Linkedin</span>
-                </a>
-              </div>
-            )}
+            {isTunga && <Links />}
 
             <span className=" text-xs text-[#052859] font-bold ">
               {isValidDate(entry?.createdAt)
@@ -204,41 +190,7 @@ export default function Entry({
 
       {isTunga && !isCalendar && <div className="h-10 w-[100px]"></div>}
 
-      {isShowEvent && isCalendar && (
-        <div
-          className="border-r-[5px] border-[#052859] rounded-lg mt-4 relative w-full 
-          overflow-hidden"
-          style={{
-            paddingTop: "56.25%",
-          }}
-        >
-          <div
-            style={{
-              position: "absolute",
-              top: 0,
-              left: 0,
-              width: "100%",
-              height: "100%",
-              backgroundColor: "#fef6f6",
-            }}
-          />
-          <iframe
-            src="https://calendar.google.com/calendar/embed?src=calebcharles343%40gmail.com&ctz=Africa%2FLagos"
-            style={{
-              position: "absolute",
-              top: 0,
-              left: 0,
-              width: "144%",
-              height: "145%",
-              border: 0,
-              transform: "scale(0.70)",
-              transformOrigin: "top left",
-            }}
-            frameBorder="0"
-            scrolling="no"
-          ></iframe>
-        </div>
-      )}
+      {isShowEvent && isCalendar && <Calendar />}
     </>
   );
 }

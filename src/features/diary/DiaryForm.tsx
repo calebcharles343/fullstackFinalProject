@@ -20,7 +20,7 @@ export default function DiaryForm({ setIsShowForm }: any) {
   };
 
   return (
-    <div className="border p-4 w-full md:w-[300px] rounded-md bg-white shadow-lg">
+    <div className="border p-4 w-full md:min-w-[300px] rounded-md bg-white shadow-lg">
       <form onSubmit={handleSubmit} className="flex flex-col space-y-4">
         <div className="flex flex-col">
           <label

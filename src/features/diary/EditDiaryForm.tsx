@@ -28,7 +28,7 @@ export default function EditDiaryForm({
   };
 
   return (
-    <div className="border p-4 w-full md:w-[300px] rounded-md self-center">
+    <div className="border p-4 w-[300px] rounded-md self-center">
       <form onSubmit={handleSubmit} className="flex flex-col">
         <div className="flex flex-col mb-4">
           <label

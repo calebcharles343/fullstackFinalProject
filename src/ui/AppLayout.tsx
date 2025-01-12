@@ -11,7 +11,10 @@ export default function AppLayout() {
   };
 
   return (
-    <div className="flex flex-col h-screen bg-gradient-to-br from-rose-600 to-gray-950 font-roboto tracking-wide">
+    <div
+      className="flex flex-col h-screen bg-gradient-to-br from-rose-600 to-gray-950 font-roboto tracking-wide"
+      style={{ fontFamily: "Roboto", letterSpacing: "0.8px" }}
+    >
       <header className="flex items-center justify-between bg-white shadow-md border-b-[3.5px] border-[#052859] px-2  md:px-4 py-2 top-0 z-10">
         <div className="container flex items-center gap-2 mr-auto ">
           <div
