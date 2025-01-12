@@ -96,7 +96,7 @@ export default function Entries() {
         <div
           className="lg:hidden relative flex flex-col items-center 
         w-full max-w-[200px] bg-white text-sm border border-gray-500 rounded-lg 
-        focus-within:border-2 focus-within:border-[#052859]"
+        focus-within:border-2 focus-within:border-[#052859] scale-90 md:scale-100"
         >
           <ReactDatePicker
             selected={searchDate}
@@ -121,7 +121,7 @@ export default function Entries() {
         >
           <div className="w-full ">
             <h2
-              className="text-xl text-center md:text-start md:text-2xl font-bold 
+              className="text-lg text-center md:text-start md:text-2xl font-bold 
             text-white"
             >
               MY NOTES
@@ -130,7 +130,7 @@ export default function Entries() {
 
           <div
             className="lg:mr-[90px] relative w-full max-w-[332px] md:max-w-[332px]  
-          lg:max-w-[285px] mb-1"
+          lg:max-w-[285px] mb-1 scale-90 md:scale-100"
           >
             <input
               type="text"
