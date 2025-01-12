@@ -40,7 +40,7 @@ export default function Entry({
       text: "Do you want to delete this entry?",
       // icon: "warning",
       showCancelButton: true,
-      confirmButtonColor: "#3085d6",
+      confirmButtonColor: "#052859",
       cancelButtonColor: "#d33",
       confirmButtonText: "Yes, delete it!",
       customClass: { popup: "custom-style" },
@@ -150,13 +150,16 @@ export default function Entry({
 
             {isTunga && (
               <div
-                className="absolute top-full mt-1 flex flex-col bg-white w-1/2 
+                className="absolute top-full mt-1 flex flex-col gap-1 bg-white w-1/2 
     text-xs py-1 px-2 rounded-md border border-gray-500 shadow-lg z-[1000]"
               >
-                <a href="https://tunga.platform.co.nl/">
+                <a href="https://tunga.platform.co.nl/" target="_blank">
                   <span className="hover:underline">TIA - Dashboard</span>
                 </a>
-                <a href="https://www.linkedin.com/company/tunga">
+                <a
+                  href="https://www.linkedin.com/company/tunga"
+                  target="_blank"
+                >
                   <span className="hover:underline">Tunga Linkedin</span>
                 </a>
               </div>
