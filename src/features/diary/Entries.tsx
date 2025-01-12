@@ -96,7 +96,7 @@ export default function Entries() {
         <div
           className="lg:hidden relative flex flex-col items-center 
         w-full max-w-[200px] bg-white text-sm border border-gray-500 rounded-lg 
-        focus-within:border-2 focus-within:border-teal-500"
+        focus-within:border-2 focus-within:border-[#052859]"
         >
           <ReactDatePicker
             selected={searchDate}
@@ -120,7 +120,10 @@ export default function Entries() {
         items-center justify-between px-2 md:px-6 "
         >
           <div className="w-full ">
-            <h2 className="text-xl text-center md:text-start md:text-2xl font-bold text-white">
+            <h2
+              className="text-xl text-center md:text-start md:text-2xl font-bold 
+            text-white"
+            >
               MY NOTES
             </h2>
           </div>
@@ -136,7 +139,7 @@ export default function Entries() {
               onChange={(e) => setSearchQuery(e.target.value)}
               className="w-full p-1 text-base bg-rose-600 text-center text-white
                placeholder:text-gray-200 border-2 border-gray-50 rounded-lg 
-               focus:outline-none focus:ring-1 focus:ring-teal-500"
+               focus:outline-none focus:ring-1 focus:ring-red-50"
               style={{ fontWeight: "bold" }}
             />
 
@@ -152,7 +155,7 @@ export default function Entries() {
           <div
             className="relative hidden lg:flex flex-col items-center w-full 
           max-w-[200px] bg-white text-sm border border-gray-500 rounded-lg 
-          focus-within:border-2 focus-within:border-teal-500 mb-1"
+          focus-within:border-2 focus-within:border-red-50 mb-1"
           >
             <ReactDatePicker
               selected={searchDate}
@@ -160,7 +163,7 @@ export default function Entries() {
               dateFormat="yyyy-MM-dd"
               className="w-full py-1 px-3 text-center text-rose-500 border-none 
               focus:outline-none rounded-md text-base"
-              placeholderText="Date (yyyy-mm-dd)"
+              placeholderText="Date - yyyy-mm-dd"
             />
             <span
               className="text-lg text-red-500 absolute right-2 top-1/2 transform 
