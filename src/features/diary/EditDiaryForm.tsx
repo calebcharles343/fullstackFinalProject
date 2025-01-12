@@ -28,18 +28,18 @@ export default function EditDiaryForm({
   };
 
   return (
-    <div className="border p-4 w-[300px] rounded-md self-center">
-      <form onSubmit={handleSubmit} className="flex flex-col">
-        <div className="flex flex-col mb-4">
+    <div className="border p-4 w-[280px] md:min-w-[300px] rounded-md bg-white shadow-lg">
+      <form onSubmit={handleSubmit} className="flex flex-col space-y-4">
+        <div className="flex flex-col">
           <label
             htmlFor="title"
-            className="text-base text-center font-bold text-teal-600"
+            className="text-base text-center font-bold text-[#052859]"
           >
             Note Title
           </label>
           <input
             id="title"
-            className="p-2 text-base border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-teal-500"
+            className="p-2 text-base border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-[#052859]"
             value={title}
             maxLength={50}
             minLength={1}
@@ -47,16 +47,16 @@ export default function EditDiaryForm({
             required
           />
         </div>
-        <div className="flex flex-col mb-4">
+        <div className="flex flex-col">
           <label
             htmlFor="content"
-            className="text-base text-center font-bold text-teal-600"
+            className="text-base text-center font-bold text-[#052859]"
           >
             Note Content
           </label>
           <textarea
             id="content"
-            className="p-2 h-40 text-base border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-teal-500"
+            className="p-2 h-40 text-base border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-[#052859]"
             value={content}
             maxLength={400}
             minLength={1}
@@ -67,9 +67,9 @@ export default function EditDiaryForm({
 
         <button
           type="submit"
-          className="py-1 px-2 text-base font-bold bg-teal-500 text-white rounded-lg"
+          className="py-2 px-4 text-base bg-[#052859] text-white rounded-lg hover:bg-[#052859] transition-colors duration-200"
         >
-          {isPending ? "Updating" : "Update Note"}
+          {isPending ? "Adding" : "Add Note"}
         </button>
       </form>
     </div>

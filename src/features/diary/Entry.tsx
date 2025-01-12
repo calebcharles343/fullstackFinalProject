@@ -178,7 +178,7 @@ export default function Entry({
 
       {isEdit && (
         <Modal onClose={handleToggleEdit}>
-          <div className="bg-white mt-4 shadow-lg p-4 rounded-lg">
+          <div className="mt-4 bg-white shadow-lg rounded-lg">
             <EditDiaryForm
               entry={entry}
               setIsEdit={setIsEdit}
