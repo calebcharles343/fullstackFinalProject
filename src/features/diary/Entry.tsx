@@ -160,10 +160,14 @@ export default function Entry({
             <div className="relative flex items-center justify-between -mb-1">
               <div>
                 <span
-                  className="inline-flex items-center text-xs text-[#DC3340] font-semibold gap-1"
+                  className={`inline-flex items-center text-xs text-[#DC3340] 
+                  font-semibold gap-1 ${isShowEvent && "hover:cursor-pointer"}`}
                   onClick={handleToggleisTunga}
                 >
-                  TUNGA {isTunga ? <BiUpArrow /> : <BiDownArrow />}
+                  TUNGA{" "}
+                  {isShowEvent && (
+                    <span>{isTunga ? <BiUpArrow /> : <BiDownArrow />}</span>
+                  )}
                 </span>
               </div>
 

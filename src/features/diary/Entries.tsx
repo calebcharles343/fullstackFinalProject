@@ -90,13 +90,13 @@ export default function Entries() {
         <div
           className="lg:hidden relative flex flex-col items-center 
         w-full max-w-[200px] bg-white text-sm border border-gray-500 rounded-lg 
-        focus-within:border-2 focus-within:border-[#052859] scale-90 md:scale-100"
+        focus-within:border-2 focus-within:border-[#052859] scale-90 md:scale-100 z-50"
         >
           <ReactDatePicker
             selected={searchDate}
             onChange={(date) => setSearchDate(date)}
             dateFormat="yyyy-MM-dd"
-            className="w-full py-1 px-3 text-center text-rose-500 border-none focus:outline-none rounded-md text-base" // Set font-size to at least 16px and remove border
+            className="w-full py-1 px-3 text-center text-rose-500 border-none focus:outline-none rounded-md text-base z-50" // Set font-size to at least 16px and remove border
             placeholderText="Date - yyyy-mm-dd"
           />
           <span
@@ -140,7 +140,7 @@ export default function Entries() {
             <span
               className="text-ld text-white absolute right-2 top-1/2 transform 
               -translate-y-1/2 cursor-pointer"
-              onClick={() => setSearchDate(null)}
+              onClick={() => setSearchQuery("")}
             >
               x
             </span>
