@@ -164,10 +164,10 @@ export default function Entry({
 
       {isShowEvent && isCalendar && (
         <div
-          className="border-r-[5px] border-rose-500 rounded-lg mt-4 relative w-full 
+          className="border-r-[5px] border-[#052859] rounded-lg mt-4 relative w-full 
           overflow-hidden"
           style={{
-            paddingTop: "56.25%", // Aspect ratio 16:9
+            paddingTop: "56.25%",
           }}
         >
           <div
@@ -177,7 +177,7 @@ export default function Entry({
               left: 0,
               width: "100%",
               height: "100%",
-              backgroundColor: "#fef6f6", // Light blue overlay
+              backgroundColor: "#fef6f6",
             }}
           />
           <iframe
