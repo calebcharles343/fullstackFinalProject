@@ -1,8 +1,14 @@
-import { useState, Dispatch, SetStateAction } from "react";
+import { useState, Dispatch, SetStateAction, useEffect } from "react";
 import { dateformat } from "../../utils/dateFormat";
 import { useDeleteEntry } from "./useDeleteEntry";
 import EditDiaryForm from "./EditDiaryForm";
-import { BiEdit, BiTrash, BiCalendarPlus } from "react-icons/bi";
+import {
+  BiEdit,
+  BiTrash,
+  BiCalendarPlus,
+  BiUpArrow,
+  BiDownArrow,
+} from "react-icons/bi";
 import Modal from "../../ui/Modal";
 import { EventType } from "../../interfaces";
 import truncate from "truncate-html";
@@ -29,7 +35,9 @@ export default function Entry({
     setIsCalendar(!isCalendar);
   };
   const handleToggleisTunga = () => {
-    setIsTunga(!isTunga);
+    if (isShowEvent) {
+      setIsTunga(!isTunga);
+    }
   };
 
   const handleDeleteEntry = (e: React.MouseEvent) => {
@@ -55,6 +63,13 @@ export default function Entry({
     });
   };
 
+  useEffect(() => {
+    if (isShowEvent === false) {
+      setIsTunga(false);
+      setIsCalendar(false);
+    }
+  }, [isShowEvent]);
+
   const isValidDate = (date: any) => {
     return !isNaN(Date.parse(date));
   };
@@ -71,6 +86,7 @@ export default function Entry({
            md:p-4 bg-gradient-to-tr from-white 
            to-red-50 
            shadow-[0_4px_6px_-1px_#77656830,0_2px_4px_-1px_#ffebee5d]`}
+          style={{ fontFamily: "Roboto", letterSpacing: "0.8px" }}
         >
           <div className="flex justify-between items-center mb-1">
             <h2 className={`text-base md:text-lg font-semibold break-words`}>
@@ -141,10 +157,10 @@ export default function Entry({
           <div className="relative flex items-center justify-between -mb-1 ">
             <div>
               <span
-                className="text-xs text-[#DC3340] font-semibold "
+                className="inline-flex items-center text-xs text-[#DC3340] font-semibold gap-1"
                 onClick={handleToggleisTunga}
               >
-                TUNGA
+                TUNGA {isTunga ? <BiUpArrow /> : <BiDownArrow />}
               </span>
             </div>
 
