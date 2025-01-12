@@ -12,7 +12,7 @@ export default function AppLayout() {
 
   return (
     <div className="flex flex-col h-screen bg-gradient-to-br from-rose-600 to-gray-950 font-roboto tracking-wide">
-      <header className="flex items-center justify-between bg-white shadow-md border-b-[3.5px] border-[#052859] px-4 py-2 top-0 z-10">
+      <header className="flex items-center justify-between bg-white shadow-md border-b-[3.5px] border-[#052859] px-2  md:px-4 py-2 top-0 z-10">
         <div className="container flex items-center gap-2 mr-auto ">
           <div
             className="flex items-center justify-center h-11 w-11 border-2 
