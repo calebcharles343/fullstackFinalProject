@@ -19,6 +19,7 @@ export default function Entry({
 }) {
   const [isEdit, setIsEdit] = useState(false);
   const [isCalendar, setIsCalendar] = useState(false);
+  const [isTunga, setIsTunga] = useState<boolean>(false);
   const { deleteEntry, isDeleting } = useDeleteEntry();
 
   const handleToggleEdit = () => {
@@ -26,6 +27,9 @@ export default function Entry({
   };
   const handleToggleCalendar = () => {
     setIsCalendar(!isCalendar);
+  };
+  const handleToggleisTunga = () => {
+    setIsTunga(!isTunga);
   };
 
   const handleDeleteEntry = (e: React.MouseEvent) => {
@@ -134,12 +138,29 @@ export default function Entry({
             </div>
           </div>
 
-          <div className="flex items-center justify-between -mb-1 ">
-            <a href="https://tunga.platform.co.nl/">
-              <span className="text-xs text-[#DC3340] font-semibold hover:underline">
+          <div className="relative flex items-center justify-between -mb-1 ">
+            <div>
+              <span
+                className="text-xs text-[#DC3340] font-semibold "
+                onClick={handleToggleisTunga}
+              >
                 TUNGA
               </span>
-            </a>
+            </div>
+
+            {isTunga && (
+              <div
+                className="absolute top-full mt-1 flex flex-col bg-white w-1/2 
+    text-xs py-1 px-2 rounded-md border border-gray-500 shadow-lg z-[1000]"
+              >
+                <a href="https://tunga.platform.co.nl/">
+                  <span className="hover:underline">TIA - Dashboard</span>
+                </a>
+                <a href="https://www.linkedin.com/company/tunga">
+                  <span className="hover:underline">Tunga Linkedin</span>
+                </a>
+              </div>
+            )}
 
             <span className=" text-xs text-[#052859] font-bold ">
               {isValidDate(entry?.createdAt)
@@ -161,6 +182,8 @@ export default function Entry({
           </div>
         </Modal>
       )}
+
+      {isTunga && !isCalendar && <div className="h-10 w-[100px]"></div>}
 
       {isShowEvent && isCalendar && (
         <div

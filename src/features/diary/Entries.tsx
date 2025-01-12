@@ -207,7 +207,7 @@ export default function Entries() {
 
       {isShowEvent && viewEvent && (
         <Modal onClose={handleCloseModal}>
-          <div className="w-full max-w-[400px] mt-4 bg-white shadow-lg rounded-lg">
+          <div className="w-full max-w-[400px] mt-4  rounded-lg">
             <Entry
               entry={viewEvent}
               isShowEvent={isShowEvent}

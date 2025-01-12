@@ -23,10 +23,17 @@ const Modal: React.FC<ModalProps> = ({ children, onClose }) => {
         exit="exit"
         transition={{ duration: 0.1, ease: "easeInOut" }}
       >
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-40 backdrop-blur-sm">
-          <div className="flex justify-center items-center relative w-screen md:w-max rounded p-4 overflow-y-scroll">
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black 
+        bg-opacity-40 backdrop-blur-sm"
+        >
+          <div
+            className="flex justify-center items-center relative 
+          w-screen md:w-max rounded p-4 overflow-y-scroll"
+          >
             <button
-              className="text-xs md:text-sm bg-white absolute -top-2 left-1/2 transform -translate-x-1/2 m-2 text-red-500 px-3 py-1 rounded-full"
+              className="text-xs md:text-sm bg-white absolute -top-2 left-1/2 
+              transform -translate-x-1/2 m-2 text-red-500 px-3 py-1 rounded-full"
               onClick={onClose}
             >
               X
