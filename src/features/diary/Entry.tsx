@@ -88,6 +88,7 @@ export default function Entry({
            md:p-4 bg-gradient-to-tr from-white 
            to-red-50 
            shadow-[0_4px_6px_-1px_#77656830,0_2px_4px_-1px_#ffebee5d]`}
+          style={{ fontFamily: "Roboto", letterSpacing: "0.8px" }}
         >
           <div className="flex justify-between items-center mb-1">
             <h2 className={`text-base md:text-lg font-semibold break-words`}>

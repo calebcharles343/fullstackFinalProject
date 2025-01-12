@@ -27,8 +27,8 @@ export default function AppLayout() {
             className="text-lg md:text-xl font-bold text-[#052859]"
             style={{ fontFamily: "Poppins", letterSpacing: "0.8px" }}
           >
-            <span className="md:hidden">Dev</span>{" "}
-            <span className="hidden md:inline">Developer</span> Diary
+            <span className="md:hidden">DEV</span>{" "}
+            <span className="hidden md:inline">DEVELOPER</span> DIARY
           </h1>
         </div>
         <div className="flex justify-center items-center h-10 w-[115px] border ml-2 md:ml-0 shadow-lg hover:bg-gray-800 hover:text-gray-50 transition-colors duration-200">

@@ -21,7 +21,11 @@ export default function DiaryForm({ setIsShowForm }: any) {
 
   return (
     <div className="border p-4 w-[280px] md:min-w-[300px] rounded-md bg-white shadow-lg">
-      <form onSubmit={handleSubmit} className="flex flex-col space-y-4">
+      <form
+        onSubmit={handleSubmit}
+        className="flex flex-col space-y-4"
+        style={{ fontFamily: "Roboto", letterSpacing: "0.8px" }}
+      >
         <div className="flex flex-col">
           <label
             htmlFor="title"

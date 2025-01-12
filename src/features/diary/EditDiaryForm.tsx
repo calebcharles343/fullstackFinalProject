@@ -29,7 +29,11 @@ export default function EditDiaryForm({
 
   return (
     <div className="border p-4 w-[280px] md:min-w-[300px] rounded-md bg-white shadow-lg">
-      <form onSubmit={handleSubmit} className="flex flex-col space-y-4">
+      <form
+        onSubmit={handleSubmit}
+        className=" flex flex-col space-y-4"
+        style={{ fontFamily: "Roboto", letterSpacing: "0.8px" }}
+      >
         <div className="flex flex-col">
           <label
             htmlFor="title"
@@ -69,7 +73,7 @@ export default function EditDiaryForm({
           type="submit"
           className="py-2 px-4 text-base bg-[#052859] text-white rounded-lg hover:bg-[#052859] transition-colors duration-200"
         >
-          {isPending ? "Adding" : "Add Note"}
+          {isPending ? "Updating" : "Update Note"}
         </button>
       </form>
     </div>
