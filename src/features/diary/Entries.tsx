@@ -5,7 +5,9 @@ import Modal from "../../ui/Modal";
 import DiaryForm from "./DiaryForm";
 import Entry from "./Entry";
 import { useEntries } from "./useEntries";
-import { BiDownArrow, BiMessageAdd, BiSearch, BiUpArrow } from "react-icons/bi";
+import { BiMessageAdd, BiSearch } from "react-icons/bi";
+import { FiArrowDown, FiArrowUp } from "react-icons/fi";
+import { GoXCircle } from "react-icons/go";
 import { EventType } from "../../interfaces";
 import { format, parseISO } from "date-fns";
 import ReactDatePicker from "react-datepicker";
@@ -92,22 +94,22 @@ export default function Entries() {
           <div
             className="lg:hidden relative flex flex-col items-center 
         w-full max-w-[200px] bg-inherit text-sm text-gray-50 border-2 border-gray-50 rounded-lg 
-        focus-within:border-2 focus-within:border-[#052859]  z-50"
+        focus-within:border-2 focus-within:border-gray-50  z-50"
           >
             <ReactDatePicker
               selected={searchDate}
               onChange={(date) => setSearchDate(date)}
               dateFormat="yyyy-MM-dd"
               className="w-full py-1 px-3 text-center bg-inherit text-gray-50 
-              placeholder:text-gray-50 border-none focus:outline-none rounded-md text-base z-50" // Set font-size to at least 16px and remove border
+              placeholder:text-gray-200 border-none focus:outline-none rounded-md text-base z-50" // Set font-size to at least 16px and remove border
               placeholderText="Date - yyyy-mm-dd"
             />
             <span
-              className="text-lg text-gray-50  absolute right-2 top-1/2 transform 
-              -translate-y-1/2 cursor-pointer"
+              className=" text-gray-50  absolute right-2 top-1/2 transform 
+              -translate-y-1/2 cursor-pointer hover:scale-110"
               onClick={() => setSearchDate(null)}
             >
-              x
+              <GoXCircle />
             </span>
           </div>
         )}
@@ -149,17 +151,17 @@ export default function Entries() {
 
               <span
                 className="text-ld text-white absolute right-11 top-1/2 transform 
-              -translate-y-1/2 cursor-pointer hover:cursor-pointer"
+              -translate-y-1/2 cursor-pointer hover:cursor-pointer  hover:scale-110"
                 onClick={() => setSearchQuery("")}
               >
-                x
+                <GoXCircle />
               </span>
 
               <span
                 className="hover:cursor-pointer mr-[2px]"
                 onClick={() => setIslastInFirstOut((prev) => !prev)}
               >
-                {islastInFirstOut ? <BiUpArrow /> : <BiDownArrow />}
+                {islastInFirstOut ? <FiArrowUp /> : <FiArrowDown />}
               </span>
             </div>
 
@@ -173,7 +175,7 @@ export default function Entries() {
                 onChange={(date) => setSearchDate(date)}
                 dateFormat="yyyy-MM-dd"
                 className="w-full py-1 px-3 text-center bg-inherit text-gray-50 
-                placeholder:text-gray-50 border-none focus:outline-none 
+                placeholder:text-gray-200 border-none focus:outline-none 
                 rounded-md text-base"
                 placeholderText="Date - yyyy-mm-dd"
               />
