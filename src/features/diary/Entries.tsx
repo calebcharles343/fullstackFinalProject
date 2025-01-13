@@ -115,7 +115,7 @@ export default function Entries() {
       </div>
 
       <div className="flex flex-col w-full items-center justify-center">
-        {filteredEvents.length > 1 && (
+        {data.data.length > 1 && (
           <div
             className="w-full lg:max-w-[910px] flex flex-col md:flex-row 
         items-center justify-between px-2 md:px-6 "
@@ -131,7 +131,8 @@ export default function Entries() {
 
             <div
               className="flex items-center lg:mr-[90px] relative w-full max-w-[332px] 
-              md:max-w-[332px] lg:max-w-[285px] mb-1 scale-90 md:scale-100 gap-2"
+              md:max-w-[332px] lg:max-w-[285px] mb-1 scale-90 md:scale-100 gap-2 
+              border-2 border-gray-50   rounded-lg px-2 "
             >
               <span className="text-lg m">
                 <BiSearch />
@@ -141,14 +142,14 @@ export default function Entries() {
                 placeholder="title or content"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full p-1 text-base bg-[#DC3340] text-center 
-                text-white placeholder:text-gray-200 border-2 border-gray-50 
+                className="w-full p-1 text-base bg-inherit text-center 
+                text-white placeholder:text-gray-200
                 rounded-lg focus:outline-none focus:ring-1 focus:ring-red-50"
                 style={{ fontWeight: "bold" }}
               />
 
               <span
-                className="text-ld text-white absolute right-8 top-1/2 transform 
+                className="text-ld text-white absolute right-9 top-1/2 transform 
               -translate-y-1/2 cursor-pointer hover:cursor-pointer"
                 onClick={() => setSearchQuery("")}
               >
