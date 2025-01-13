@@ -5,7 +5,7 @@ import Modal from "../../ui/Modal";
 import DiaryForm from "./DiaryForm";
 import Entry from "./Entry";
 import { useEntries } from "./useEntries";
-import { BiDownArrow, BiMessageAdd, BiUpArrow } from "react-icons/bi";
+import { BiDownArrow, BiMessageAdd, BiSearch, BiUpArrow } from "react-icons/bi";
 import { EventType } from "../../interfaces";
 import { format, parseISO } from "date-fns";
 import ReactDatePicker from "react-datepicker";
@@ -92,17 +92,20 @@ export default function Entries() {
           <div
             className="lg:hidden relative flex flex-col items-center 
         w-full max-w-[200px] bg-white text-sm border border-gray-500 rounded-lg 
-        focus-within:border-2 focus-within:border-[#052859] scale-90 md:scale-100 z-50"
+        focus-within:border-2 focus-within:border-[#052859] scale-90 
+        md:scale-100 z-50"
           >
             <ReactDatePicker
               selected={searchDate}
               onChange={(date) => setSearchDate(date)}
               dateFormat="yyyy-MM-dd"
-              className="w-full py-1 px-3 text-center text-rose-500 border-none focus:outline-none rounded-md text-base z-50" // Set font-size to at least 16px and remove border
+              className="w-full py-1 px-3 text-center text-rose-500 border-none 
+              focus:outline-none rounded-md text-base z-50" // Set font-size to at least 16px and remove border
               placeholderText="Date - yyyy-mm-dd"
             />
             <span
-              className="text-lg text-red-500 absolute right-2 top-1/2 transform -translate-y-1/2 cursor-pointer"
+              className="text-lg text-red-500 absolute right-2 top-1/2 transform 
+              -translate-y-1/2 cursor-pointer"
               onClick={() => setSearchDate(null)}
             >
               x
@@ -127,17 +130,20 @@ export default function Entries() {
             </div>
 
             <div
-              className="flex items-center lg:mr-[90px] relative w-full max-w-[332px] md:max-w-[332px]  
-          lg:max-w-[285px] mb-1 scale-90 md:scale-100 gap-2"
+              className="flex items-center lg:mr-[90px] relative w-full max-w-[332px] 
+              md:max-w-[332px] lg:max-w-[285px] mb-1 scale-90 md:scale-100 gap-2"
             >
+              <span className="text-lg m">
+                <BiSearch />
+              </span>
               <input
                 type="text"
-                placeholder="Search by title or content"
+                placeholder="title or content"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full p-1 text-base bg-[#DC3340] text-center text-white
-               placeholder:text-gray-200 border-2 border-gray-50 rounded-lg 
-               focus:outline-none focus:ring-1 focus:ring-red-50"
+                className="w-full p-1 text-base bg-[#DC3340] text-center 
+                text-white placeholder:text-gray-200 border-2 border-gray-50 
+                rounded-lg focus:outline-none focus:ring-1 focus:ring-red-50"
                 style={{ fontWeight: "bold" }}
               />
 
@@ -193,8 +199,9 @@ export default function Entries() {
         )}
 
         <motion.div
-          className="w-full min-w-[300px] md:min-w-[610px] lg:w-[1050px] lg:max-w-[1050px] 
-          h-[478px] overflow-y-scroll mt-1 md:mt-0 rounded-3xl overflow-x-hidden"
+          className="w-full min-w-[300px] md:min-w-[610px] lg:w-[1050px] 
+          lg:max-w-[1050px] h-[478px] overflow-y-scroll mt-1 md:mt-0 
+          rounded-3xl overflow-x-hidden"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
