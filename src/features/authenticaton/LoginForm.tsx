@@ -78,7 +78,7 @@ const LoginForm: React.FC = () => {
               </label>
               <input
                 className="w-full h-8 md:h-10 px-4 rounded-md border 
-                focus:border-[#052859] focus:outline-none shadow-lg 
+                focus:border-[#052859] focus:outline-none shadow-xl 
                 text-gray-700"
                 id="email"
                 type="email"
@@ -100,7 +100,7 @@ const LoginForm: React.FC = () => {
               <div className="relative w-full">
                 <input
                   className="w-full h-8 md:h-10 px-4 rounded-md border 
-                  focus:border-[#052859] focus:outline-none shadow-lg 
+                  focus:border-[#052859] focus:outline-none shadow-xl 
                   text-gray-700"
                   id="password"
                   type={showPassword ? "text" : "password"}
