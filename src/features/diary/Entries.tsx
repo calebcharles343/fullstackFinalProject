@@ -156,11 +156,17 @@ export default function Entries() {
               </span>
 
               <span
-                className="hover:cursor-pointer mr-[2px]"
+                className={`hover:cursor-pointer mr-[2px] ${
+                  islastInFirstOut ? "up" : "down"
+                }`}
                 onClick={() => setIslastInFirstOut(!islastInFirstOut)}
               >
-                {islastInFirstOut && <BiUpArrow />}
-                {!islastInFirstOut && <BiDownArrow />}
+                <BiUpArrow
+                  className={`${islastInFirstOut ? "block" : "hidden"}`}
+                />
+                <BiDownArrow
+                  className={`${!islastInFirstOut ? "block" : "hidden"}`}
+                />
               </span>
             </div>
 
