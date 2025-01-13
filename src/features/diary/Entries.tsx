@@ -92,19 +92,19 @@ export default function Entries() {
           <div
             className="lg:hidden relative flex flex-col items-center 
         w-full max-w-[200px] bg-white text-sm border border-gray-500 rounded-lg 
-        focus-within:border-2 focus-within:border-[#052859] scale-90 
+        focus-within:border-2 focus-within:border-[#052859] scale-95 
         md:scale-100 z-50"
           >
             <ReactDatePicker
               selected={searchDate}
               onChange={(date) => setSearchDate(date)}
               dateFormat="yyyy-MM-dd"
-              className="w-full py-1 px-3 text-center text-rose-500 border-none 
+              className="w-full py-1 px-3 text-center text-rose-900 border-none 
               focus:outline-none rounded-md text-base z-50" // Set font-size to at least 16px and remove border
               placeholderText="Date - yyyy-mm-dd"
             />
             <span
-              className="text-lg text-red-500 absolute right-2 top-1/2 transform 
+              className="text-lg text-red-900 absolute right-2 top-1/2 transform 
               -translate-y-1/2 cursor-pointer"
               onClick={() => setSearchDate(null)}
             >
@@ -131,7 +131,7 @@ export default function Entries() {
 
             <div
               className="flex items-center lg:mr-[90px] relative w-full max-w-[332px] 
-              md:max-w-[332px] lg:max-w-[285px] mb-1 scale-90 md:scale-100 gap-2 
+              md:max-w-[332px] lg:max-w-[285px] mb-1 scale-95 md:scale-100 gap-2 
               border-2 border-gray-50   rounded-lg px-2 "
             >
               <span className="text-lg m">
@@ -160,7 +160,8 @@ export default function Entries() {
                 className="hover:cursor-pointer"
                 onClick={() => setIslastInFirstOut(!islastInFirstOut)}
               >
-                {islastInFirstOut ? <BiUpArrow /> : <BiDownArrow />}
+                {islastInFirstOut && <BiUpArrow />}
+                {!islastInFirstOut && <BiDownArrow />}
               </span>
             </div>
 
@@ -173,12 +174,12 @@ export default function Entries() {
                 selected={searchDate}
                 onChange={(date) => setSearchDate(date)}
                 dateFormat="yyyy-MM-dd"
-                className="w-full py-1 px-3 text-center text-rose-500 border-none 
+                className="w-full py-1 px-3 text-center text-red-900 border-none 
               focus:outline-none rounded-md text-base"
                 placeholderText="Date - yyyy-mm-dd"
               />
               <span
-                className="text-lg text-red-500 absolute right-2 top-1/2 transform 
+                className="text-lg text-red-900 absolute right-2 top-1/2 transform 
               -translate-y-1/2 cursor-pointer"
                 onClick={() => setSearchDate(null)}
               >
