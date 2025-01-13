@@ -5,7 +5,7 @@ import Modal from "../../ui/Modal";
 import DiaryForm from "./DiaryForm";
 import Entry from "./Entry";
 import { useEntries } from "./useEntries";
-import { BiMessageAdd } from "react-icons/bi";
+import { BiDownArrow, BiMessageAdd, BiUpArrow } from "react-icons/bi";
 import { EventType } from "../../interfaces";
 import { format, parseISO } from "date-fns";
 import ReactDatePicker from "react-datepicker";
@@ -20,6 +20,7 @@ export default function Entries() {
   const [searchDate, setSearchDate] = useState<Date | null>(null);
   const [searchQuery, setSearchQuery] = useState<string>("");
   const [filteredEvents, setFilteredEvents] = useState<EventType[]>([]);
+  const [islastInFirstOut, setIslastInFirstOut] = useState(false);
 
   const { data, isLoading } = useEntries();
 
@@ -34,13 +35,14 @@ export default function Entries() {
             (order.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
               order.content.toLowerCase().includes(searchQuery.toLowerCase()))
         )
-        .sort(
-          (a: EventType, b: EventType) =>
-            new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
-        );
+        .sort((a: EventType, b: EventType) => {
+          return islastInFirstOut
+            ? new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime() // LIFO
+            : new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime(); // FIFO
+        });
       setFilteredEvents(filtered);
     }
-  }, [searchDate, searchQuery, data?.data]);
+  }, [islastInFirstOut, searchDate, searchQuery, data?.data]);
 
   const handleCloseModal = () => {
     setIsShowForm(false);
@@ -63,7 +65,7 @@ export default function Entries() {
   }
 
   return (
-    <div className="flex flex-col items-center w-full min-w-[300px] h-screen gap-3 p-4 md:p-2">
+    <div className="flex flex-col items-center w-full min-w-[300px] gap-3 p-4 md:p-2">
       <AnimatePresence>
         {isShowForm && (
           <Modal onClose={handleCloseModal}>
@@ -118,15 +120,15 @@ export default function Entries() {
             <div className="w-full ">
               <h2
                 className="text-lg text-center md:text-start md:text-2xl font-bold 
-            text-white"
+            text-white lg:ml-5"
               >
                 MY NOTES
               </h2>
             </div>
 
             <div
-              className="lg:mr-[90px] relative w-full max-w-[332px] md:max-w-[332px]  
-          lg:max-w-[285px] mb-1 scale-90 md:scale-100"
+              className="flex items-center lg:mr-[90px] relative w-full max-w-[332px] md:max-w-[332px]  
+          lg:max-w-[285px] mb-1 scale-90 md:scale-100 gap-2"
             >
               <input
                 type="text"
@@ -140,11 +142,18 @@ export default function Entries() {
               />
 
               <span
-                className="text-ld text-white absolute right-2 top-1/2 transform 
-              -translate-y-1/2 cursor-pointer"
+                className="text-ld text-white absolute right-8 top-1/2 transform 
+              -translate-y-1/2 cursor-pointer hover:cursor-pointer"
                 onClick={() => setSearchQuery("")}
               >
                 x
+              </span>
+
+              <span
+                className="hover:cursor-pointer"
+                onClick={() => setIslastInFirstOut(!islastInFirstOut)}
+              >
+                {islastInFirstOut ? <BiUpArrow /> : <BiDownArrow />}
               </span>
             </div>
 
@@ -184,7 +193,7 @@ export default function Entries() {
         )}
 
         <motion.div
-          className="w-full min-w-[300px] md:min-w-[610px] lg:w-[910px] lg:max-w-[910px] 
+          className="w-full min-w-[300px] md:min-w-[610px] lg:w-[1050px] lg:max-w-[1050px] 
           h-[478px] overflow-y-scroll mt-1 md:mt-0 rounded-3xl overflow-x-hidden"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}

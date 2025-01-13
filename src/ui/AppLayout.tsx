@@ -12,10 +12,14 @@ export default function AppLayout() {
 
   return (
     <div
-      className="flex flex-col h-screen bg-gradient-to-br from-[#DC3340] to-gray-950 font-roboto tracking-wide"
+      className="flex flex-col h-screen bg-gradient-to-br from-[#DC3340] 
+      to-gray-950 font-roboto tracking-wide"
       style={{ fontFamily: "Roboto", letterSpacing: "0.8px" }}
     >
-      <header className="flex items-center justify-between bg-white shadow-md border-b-[3.5px] border-[#052859] px-2  md:px-4 py-2 top-0 z-10">
+      <header
+        className="flex items-center justify-between bg-white shadow-md 
+      border-b-[3.5px] border-[#052859] px-2  md:px-4 py-2 top-0 z-10"
+      >
         <div className="container flex items-center gap-2 mr-auto ">
           <div
             className="flex items-center justify-center h-11 w-11 border-2 
@@ -29,14 +33,20 @@ export default function AppLayout() {
           >
             <span className="md:hidden">DEV</span>{" "}
             <span className="hidden md:inline">DEVELOPER</span> DIARY
+            <span className="text-[8px]">DEMO</span>
           </h1>
         </div>
-        <div className="flex justify-center items-center h-10 w-[115px] border ml-2 md:ml-0 shadow-lg hover:bg-gray-800 hover:text-gray-50 transition-colors duration-200">
+        <div
+          className="flex justify-center items-center h-10 w-[115px]  ml-2 
+        md:ml-0  transition-colors 
+        duration-200 "
+        >
           {isPending ? (
             <SpinnerMini />
           ) : (
             <button
-              className="w-full h-full text-sm flex justify-center items-center gap-1 p-1 md:p-2 rounded"
+              className="border-2 w-full min-w-[85px] h-full text-sm text-[#052859] flex justify-center items-center 
+              gap-1 p-1 md:p-2 rounded shadow-lg hover:bg-[#052859] hover:text-gray-50"
               onClick={handleLogout}
             >
               <BiLogOut />

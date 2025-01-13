@@ -16,6 +16,7 @@ import truncate from "truncate-html";
 import Swal from "sweetalert2";
 import Calendar from "../../ui/Calendar";
 import Links from "../../ui/Links";
+import Linkify from "react-linkify";
 
 export default function Entry({
   entry,
@@ -100,7 +101,7 @@ export default function Entry({
               <h2 className={`text-base md:text-lg font-semibold break-words`}>
                 {!isShowEvent &&
                   truncate(entry.title, {
-                    length: isShowEvent ? 25 : 15,
+                    length: isShowEvent ? 25 : 24,
                     ellipsis: "...",
                   })}
               </h2>
@@ -141,20 +142,38 @@ export default function Entry({
                 )}
 
                 {!isShowEvent && (
-                  <p
-                    className={`text-[13px] md:text-[14px]`}
-                    style={{ lineHeight: "1.4" }}
+                  <Linkify
+                    componentDecorator={(decoratedHref, decoratedText, key) => (
+                      <a
+                        href={decoratedHref}
+                        key={key}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        style={{ textDecoration: "underline" }} // Apply inline style here
+                        className="text-blue-600 hover:text-blue-800"
+                      >
+                        {decoratedText}
+                      </a>
+                    )}
                   >
-                    {entry.content}
-                  </p>
+                    <p
+                      className={`text-[13px] md:text-[14px]`}
+                      style={{ lineHeight: "1.4", whiteSpace: "pre-wrap" }}
+                    >
+                      {entry.content}
+                    </p>
+                  </Linkify>
                 )}
+
                 {isShowEvent && (
-                  <p
-                    className={`text-sm md:text-base"}`}
-                    style={{ lineHeight: "1.35" }}
-                  >
-                    {entry.content}
-                  </p>
+                  <Linkify>
+                    <p
+                      className={`text-sm md:text-base}`}
+                      style={{ lineHeight: "1.35", whiteSpace: "pre-wrap" }}
+                    >
+                      {entry.content}
+                    </p>
+                  </Linkify>
                 )}
               </div>
             </div>
