@@ -92,8 +92,7 @@ export default function Entries() {
           <div
             className="lg:hidden relative flex flex-col items-center 
         w-full max-w-[200px] bg-inherit text-sm text-gray-50 border-2 border-gray-50 rounded-lg 
-        focus-within:border-2 focus-within:border-[#052859] scale-95 
-        md:scale-100 z-50"
+        focus-within:border-2 focus-within:border-[#052859]  z-50"
           >
             <ReactDatePicker
               selected={searchDate}
@@ -131,10 +130,10 @@ export default function Entries() {
 
             <div
               className="flex items-center lg:mr-[90px] relative w-full max-w-[332px] 
-              md:max-w-[332px] lg:max-w-[285px] mb-1 scale-95 md:scale-100 gap-2 
-              border-2 border-gray-50   rounded-lg px-2 "
+              md:max-w-[332px] lg:max-w-[285px] mb-1  gap-3 
+              border-2 border-gray-50   rounded-lg px-[8px] "
             >
-              <span className="text-lg m">
+              <span className="text-lg ml-[2px]">
                 <BiSearch />
               </span>
               <input
@@ -142,14 +141,14 @@ export default function Entries() {
                 placeholder="title or content"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full p-1 text-base bg-inherit text-center 
+                className="w-full p-1 text-base bg-inherit text-center border-l border-r 
                 text-white placeholder:text-gray-200
                 rounded-lg focus:outline-none focus:ring-1 focus:ring-red-50"
                 style={{ fontWeight: "bold" }}
               />
 
               <span
-                className="text-ld text-white absolute right-9 top-1/2 transform 
+                className="text-ld text-white absolute right-11 top-1/2 transform 
               -translate-y-1/2 cursor-pointer hover:cursor-pointer"
                 onClick={() => setSearchQuery("")}
               >
@@ -157,7 +156,7 @@ export default function Entries() {
               </span>
 
               <span
-                className="hover:cursor-pointer"
+                className="hover:cursor-pointer mr-[2px]"
                 onClick={() => setIslastInFirstOut(!islastInFirstOut)}
               >
                 {islastInFirstOut && <BiUpArrow />}
@@ -174,8 +173,9 @@ export default function Entries() {
                 selected={searchDate}
                 onChange={(date) => setSearchDate(date)}
                 dateFormat="yyyy-MM-dd"
-                className="w-full py-1 px-3 text-center bg-inherit text-gray-50 placeholder:text-gray-50 border-none 
-              focus:outline-none rounded-md text-base"
+                className="w-full py-1 px-3 text-center bg-inherit text-gray-50 
+                placeholder:text-gray-50 border-none focus:outline-none 
+                rounded-md text-base"
                 placeholderText="Date - yyyy-mm-dd"
               />
               <span
