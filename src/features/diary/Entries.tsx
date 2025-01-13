@@ -144,7 +144,7 @@ export default function Entries() {
                 className="w-full p-1 text-base bg-inherit text-center border-l border-r 
                 text-white placeholder:text-gray-200
                 rounded-lg focus:outline-none focus:ring-1 focus:ring-red-50"
-                style={{ fontWeight: "bold" }}
+                // style={{ fontWeight: "bold" }}
               />
 
               <span
