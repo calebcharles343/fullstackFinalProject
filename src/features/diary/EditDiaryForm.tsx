@@ -28,7 +28,7 @@ export default function EditDiaryForm({
   };
 
   return (
-    <div className="border p-4 w-[280px] md:min-w-[300px] rounded-md bg-white shadow-lg">
+    <div className="border p-4 w-[280px] md:min-w-[400px] l  rounded-md bg-gray-50 shadow-lg">
       <form
         onSubmit={handleSubmit}
         className=" flex flex-col space-y-4"
@@ -43,7 +43,7 @@ export default function EditDiaryForm({
           </label>
           <input
             id="title"
-            className="p-2 text-base border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-[#052859]"
+            className="p-2 text-base border rounded-lg shadow-lg focus:outline-none focus:ring-2 focus:ring-[#052859]"
             value={title}
             maxLength={50}
             minLength={1}
@@ -60,7 +60,7 @@ export default function EditDiaryForm({
           </label>
           <textarea
             id="content"
-            className="p-2 h-40 text-base border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-[#052859]"
+            className="p-2 h-40 text-base border rounded-lg shadow-lg focus:outline-none focus:ring-2 focus:ring-[#052859]"
             value={content}
             maxLength={400}
             minLength={1}

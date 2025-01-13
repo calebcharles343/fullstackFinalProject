@@ -51,7 +51,7 @@ export default function Entry({
       text: "Do you want to delete this entry?",
       showCancelButton: true,
       confirmButtonColor: "#052859",
-      cancelButtonColor: "#d33",
+      cancelButtonColor: "#DC3340",
       confirmButtonText: "Yes, delete it!",
       customClass: { popup: "custom-style" },
     }).then((result) => {
@@ -87,7 +87,9 @@ export default function Entry({
               isShowEvent && "md:w-[400px]"
             } text-gray-700 border-r-[5px] border-[#DC3340] rounded-lg p-3
               md:p-4 bg-gradient-to-tr from-white to-red-50
-              shadow-[0_4px_6px_-1px_#77656830,0_2px_4px_-1px_#ffebee5d]`}
+              shadow-[0_4px_6px_-1px_#77656830,0_2px_4px_-1px_#ffebee5d] ${
+                !isShowEvent && "hover:cursor-pointer"
+              }`}
             style={{ fontFamily: "Roboto", letterSpacing: "0.8px" }}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -149,7 +151,7 @@ export default function Entry({
                 {isShowEvent && (
                   <p
                     className={`text-sm md:text-base"}`}
-                    style={{ lineHeight: "1.3" }}
+                    style={{ lineHeight: "1.35" }}
                   >
                     {entry.content}
                   </p>

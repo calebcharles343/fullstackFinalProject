@@ -181,13 +181,15 @@ export default function Entries() {
         )}
 
         <motion.div
-          className="w-full min-w-[300px] md:min-w-[610px] lg:w-[910px] lg:max-w-[910px] h-[478px] overflow-y-scroll mt-1 md:mt-0 rounded-3xl"
+          className="w-full min-w-[300px] md:min-w-[610px] lg:w-[910px] lg:max-w-[910px] 
+          h-[478px] overflow-y-scroll mt-1 md:mt-0 rounded-3xl overflow-x-hidden"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
         >
           <motion.div
-            className="w-full grid gap-2 md:gap-2 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 p-2 md:p-4 md:pb-2 rounded-3xl"
+            className="w-full grid gap-2 md:gap-2 grid-cols-1 md:grid-cols-2 
+            lg:grid-cols-3 p-2 md:p-4 md:pb-2 rounded-3xl overflow-x-hidden"
             layout
           >
             {filteredEvents?.map((entry: EventType, index: number) => (

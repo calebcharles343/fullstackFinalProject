@@ -65,7 +65,7 @@ const LoginForm: React.FC = () => {
         <form
           onSubmit={handleSubmit}
           className="flex flex-col items-center gap-4 sm:gap-6 md:gap-8 
-          lg:gap-10 w-full max-w-md bg-white bg-opacity-90 p-4 md:p-6 rounded-md 
+          lg:gap-10 w-full max-w-md bg-white bg-opacity-95 p-4 md:p-6 rounded-md 
           shadow-xl backdrop-blur-lg  mx-4 md:mx-0"
         >
           <div className="flex flex-col w-full gap-4">
@@ -78,7 +78,7 @@ const LoginForm: React.FC = () => {
               </label>
               <input
                 className="w-full h-8 md:h-10 px-4 rounded-md border 
-                focus:border-[#B97743] focus:outline-none shadow-sm 
+                focus:border-[#052859] focus:outline-none shadow-lg 
                 text-gray-700"
                 id="email"
                 type="email"
@@ -100,7 +100,7 @@ const LoginForm: React.FC = () => {
               <div className="relative w-full">
                 <input
                   className="w-full h-8 md:h-10 px-4 rounded-md border 
-                  focus:border-[#B97743] focus:outline-none shadow-sm 
+                  focus:border-[#052859] focus:outline-none shadow-lg 
                   text-gray-700"
                   id="password"
                   type={showPassword ? "text" : "password"}
@@ -124,7 +124,7 @@ const LoginForm: React.FC = () => {
           <button
             type="submit"
             className="w-full h-8 md:h-10 flex justify-center items-center 
-            bg-gray-800 text-white rounded-md shadow-md"
+            bg-[#052859] text-white rounded-md shadow-md"
             disabled={isLoading}
           >
             {isLoading ? <SpinnerMini /> : "Login"}

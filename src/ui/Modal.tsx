@@ -28,7 +28,7 @@ const Modal: React.FC<ModalProps> = ({ children, onClose }) => {
         bg-opacity-40 backdrop-blur-sm"
         >
           <div
-            className="flex justify-center items-center relative 
+            className=" flex justify-center items-center relative 
           w-screen md:w-max rounded p-4 overflow-y-scroll"
           >
             <button
