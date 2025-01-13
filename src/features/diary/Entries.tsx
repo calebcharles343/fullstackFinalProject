@@ -88,7 +88,7 @@ export default function Entries() {
         >
           Add Note <BiMessageAdd />
         </button>
-        {filteredEvents.length > 1 && (
+        {data.data.length > 1 && (
           <div
             className="lg:hidden relative flex flex-col items-center 
         w-full max-w-[200px] bg-white text-sm border border-gray-500 rounded-lg 
