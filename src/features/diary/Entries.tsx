@@ -91,7 +91,7 @@ export default function Entries() {
         {data.data.length > 1 && (
           <div
             className="lg:hidden relative flex flex-col items-center 
-        w-full max-w-[200px] bg-white text-sm border border-gray-500 rounded-lg 
+        w-full max-w-[200px] bg-inherit text-sm text-gray-50 border-2 border-gray-50 rounded-lg 
         focus-within:border-2 focus-within:border-[#052859] scale-95 
         md:scale-100 z-50"
           >
@@ -99,12 +99,12 @@ export default function Entries() {
               selected={searchDate}
               onChange={(date) => setSearchDate(date)}
               dateFormat="yyyy-MM-dd"
-              className="w-full py-1 px-3 text-center text-rose-900 border-none 
-              focus:outline-none rounded-md text-base z-50" // Set font-size to at least 16px and remove border
+              className="w-full py-1 px-3 text-center bg-inherit text-gray-50 
+              placeholder:text-gray-50 border-none focus:outline-none rounded-md text-base z-50" // Set font-size to at least 16px and remove border
               placeholderText="Date - yyyy-mm-dd"
             />
             <span
-              className="text-lg text-red-900 absolute right-2 top-1/2 transform 
+              className="text-lg text-gray-50  absolute right-2 top-1/2 transform 
               -translate-y-1/2 cursor-pointer"
               onClick={() => setSearchDate(null)}
             >
@@ -167,19 +167,19 @@ export default function Entries() {
 
             <div
               className="relative hidden lg:flex flex-col items-center w-full 
-          max-w-[200px] bg-white text-sm border border-gray-500 rounded-lg 
+          max-w-[200px] bg-inherit text-sm text-gray-50 border-2 border-gray-50 rounded-lg 
           focus-within:border-2 focus-within:border-red-50 mb-1"
             >
               <ReactDatePicker
                 selected={searchDate}
                 onChange={(date) => setSearchDate(date)}
                 dateFormat="yyyy-MM-dd"
-                className="w-full py-1 px-3 text-center text-red-900 border-none 
+                className="w-full py-1 px-3 text-center bg-inherit text-gray-50 placeholder:text-gray-50 border-none 
               focus:outline-none rounded-md text-base"
                 placeholderText="Date - yyyy-mm-dd"
               />
               <span
-                className="text-lg text-red-900 absolute right-2 top-1/2 transform 
+                className="text-lg text-gray-50  absolute right-2 top-1/2 transform 
               -translate-y-1/2 cursor-pointer"
                 onClick={() => setSearchDate(null)}
               >
