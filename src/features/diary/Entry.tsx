@@ -142,6 +142,15 @@ export default function Entry({
                 )}
 
                 {!isShowEvent && (
+                  <p
+                    className={`text-[13px] md:text-[14px]`}
+                    style={{ lineHeight: "1.4", whiteSpace: "pre-wrap" }}
+                  >
+                    {entry.content}
+                  </p>
+                )}
+
+                {isShowEvent && (
                   <Linkify
                     componentDecorator={(decoratedHref, decoratedText, key) => (
                       <a
@@ -149,24 +158,13 @@ export default function Entry({
                         key={key}
                         target="_blank"
                         rel="noopener noreferrer"
-                        style={{ textDecoration: "underline" }} // Apply inline style here
-                        className="text-blue-600 hover:text-blue-800"
+                        style={{ textDecoration: "underline" }}
+                        className="text-inherit hover:text-blue-800"
                       >
                         {decoratedText}
                       </a>
                     )}
                   >
-                    <p
-                      className={`text-[13px] md:text-[14px]`}
-                      style={{ lineHeight: "1.4", whiteSpace: "pre-wrap" }}
-                    >
-                      {entry.content}
-                    </p>
-                  </Linkify>
-                )}
-
-                {isShowEvent && (
-                  <Linkify>
                     <p
                       className={`text-sm md:text-base}`}
                       style={{ lineHeight: "1.35", whiteSpace: "pre-wrap" }}
