@@ -54,10 +54,7 @@ const LoginForm: React.FC = () => {
           </div>
         </a>
 
-        <h1
-          className=" md:text-lg font-extrabold text-white "
-          style={{ fontFamily: "Poppins", letterSpacing: "0.8px" }}
-        >
+        <h1 className=" md:text-lg font-extrabold text-white ">
           DEVELOPER DIARY <span className="text-[8px]">DEMO</span>
         </h1>
       </div>

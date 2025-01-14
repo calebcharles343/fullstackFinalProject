@@ -29,7 +29,7 @@ export default function AppLayout() {
           </div>
           <h1
             className="text-lg md:text-xl font-bold text-[#052859]"
-            style={{ fontFamily: "Poppins", letterSpacing: "0.8px" }}
+            // style={{ fontFamily: "Poppins", letterSpacing: "0.8px" }}
           >
             <span className="md:hidden">DEV</span>{" "}
             <span className="hidden md:inline">DEVELOPER</span> DIARY
