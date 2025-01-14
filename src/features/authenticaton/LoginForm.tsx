@@ -43,7 +43,7 @@ const LoginForm: React.FC = () => {
     >
       <div
         className="scale-75 md:scale-90 mb-1 md:mb-2 flex items-center  
-      bg-rose-800 opacity-90 text-white rounded-full p-2 gap-2 border-4 "
+      bg-inherit opacity-90 text-white rounded-full p-2 gap-2 border-4 "
       >
         <a href="">
           <div
@@ -54,8 +54,8 @@ const LoginForm: React.FC = () => {
           </div>
         </a>
 
-        <h1 className=" md:text-lg font-extrabold text-white ">
-          DEVELOPER DIARY <span className="text-[8px]">DEMO</span>
+        <h1 className=" md:text-lg font-extrabold text-white mt-[6px] ">
+          DEVELOPER DIARY <span className="text-[8px] ">DEMO</span>
         </h1>
       </div>
       <div className="w-full md:w-[400px] flex items-center justify-center">
