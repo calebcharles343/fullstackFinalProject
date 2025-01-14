@@ -28,7 +28,7 @@ export default function AppLayout() {
             <span className="text-[8px] font-extrabold">TUNGA</span>
           </div>
           <h1
-            className="text-lg md:text-xl font-bold text-[#052859]"
+            className="text-lg md:text-xl font-bold text-[#052859] mt-[6px]"
             // style={{ fontFamily: "Poppins", letterSpacing: "0.8px" }}
           >
             <span className="md:hidden">DEV</span>{" "}

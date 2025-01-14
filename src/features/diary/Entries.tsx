@@ -181,11 +181,11 @@ export default function Entries() {
                 placeholderText="Date - yyyy-mm-dd"
               />
               <span
-                className="text-lg text-gray-50  absolute right-2 top-1/2 transform 
-              -translate-y-1/2 cursor-pointer"
+                className=" text-gray-50  absolute right-2 top-1/2 transform 
+              -translate-y-1/2 cursor-pointer hover:scale-110"
                 onClick={() => setSearchDate(null)}
               >
-                x
+                <GoXCircle />
               </span>
             </div>
           </div>
