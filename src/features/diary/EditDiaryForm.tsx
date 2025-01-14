@@ -28,7 +28,7 @@ export default function EditDiaryForm({
   };
 
   return (
-    <div className="border p-4 w-[280px] md:min-w-[400px] l  rounded-md bg-gray-50 shadow-lg">
+    <div className="border p-4 w-full min-w-[280px] md:w-[500px]  rounded-md bg-gray-50 shadow-lg">
       <form
         onSubmit={handleSubmit}
         className=" flex flex-col space-y-4"

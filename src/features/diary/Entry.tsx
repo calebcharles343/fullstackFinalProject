@@ -205,7 +205,7 @@ export default function Entry({
       {isEdit && (
         <Modal onClose={handleToggleEdit}>
           <motion.div
-            className="mt-4 bg-white shadow-lg rounded-lg"
+            className="w-full mt-4 bg-white shadow-lg rounded-lg"
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.95 }}

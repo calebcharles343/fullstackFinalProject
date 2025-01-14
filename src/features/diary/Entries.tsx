@@ -27,7 +27,7 @@ export default function Entries() {
   const { data, isLoading } = useEntries();
 
   useEffect(() => {
-    if (data) {
+    if (data?.data) {
       const filtered = data.data
         .filter(
           (order: EventType) =>
@@ -66,13 +66,22 @@ export default function Entries() {
     );
   }
 
+  // Safeguard against undefined or empty data
+  if (!data?.data?.length) {
+    return (
+      <div className="flex items-center justify-center w-full h-full text-white">
+        <p>No notes available.</p>
+      </div>
+    );
+  }
+
   return (
     <div className="flex flex-col items-center w-full min-w-[300px] gap-3 p-4 md:p-2">
       <AnimatePresence>
         {isShowForm && (
           <Modal onClose={handleCloseModal}>
             <motion.div
-              className="mt-4 bg-white shadow-lg rounded-lg"
+              className="w-full mt-4 bg-white shadow-lg rounded-lg"
               initial={{ opacity: 0, y: -50 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: 50 }}
