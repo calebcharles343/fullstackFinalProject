@@ -20,7 +20,7 @@ export default function DiaryForm({ setIsShowForm }: any) {
   };
 
   return (
-    <div className="border p-4 w-full min-w-[280px] md:w-[500px]  rounded-md bg-gray-50 shadow-lg">
+    <div className="border p-4 w-full min-w-[280px] md:w-[500px]   rounded-md bg-gray-50 shadow-lg">
       <form
         onSubmit={handleSubmit}
         className="flex flex-col space-y-4"
@@ -52,7 +52,7 @@ export default function DiaryForm({ setIsShowForm }: any) {
           </label>
           <textarea
             id="content"
-            className="p-2 h-40 text-base border rounded-lg shadow-lg focus:outline-none focus:ring-2 focus:ring-[#052859]"
+            className="p-2 h-40 text-base border rounded-lg shadow-lg focus:outline-none max-h-[300px] focus:ring-2 focus:ring-[#052859]"
             value={content}
             maxLength={400}
             minLength={1}

@@ -60,7 +60,7 @@ export default function EditDiaryForm({
           </label>
           <textarea
             id="content"
-            className="p-2 h-40 text-base border rounded-lg shadow-lg focus:outline-none focus:ring-2 focus:ring-[#052859]"
+            className="p-2 h-40 text-base border rounded-lg shadow-lg focus:outline-none max-h-[300px] focus:ring-2 focus:ring-[#052859]"
             value={content}
             maxLength={400}
             minLength={1}
