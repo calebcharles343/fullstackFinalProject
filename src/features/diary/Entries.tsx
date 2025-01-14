@@ -101,7 +101,8 @@ export default function Entries() {
               onChange={(date) => setSearchDate(date)}
               dateFormat="yyyy-MM-dd"
               className="w-full py-1 px-3 text-center bg-inherit text-gray-50 
-              placeholder:text-gray-200 border-none focus:outline-none rounded-md text-base z-50" // Set font-size to at least 16px and remove border
+              placeholder:text-gray-200 placeholder:text-sm md:placeholder:text-base 
+              border-none focus:outline-none rounded-md text-base z-50" // Set font-size to at least 16px and remove border
               placeholderText="Date - yyyy-mm-dd"
             />
             <span
