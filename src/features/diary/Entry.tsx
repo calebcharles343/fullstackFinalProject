@@ -87,7 +87,7 @@ export default function Entry({
             } ${
               isShowEvent && "md:w-[400px]"
             } text-gray-700 border-r-[5px] border-[#DC3340] rounded-lg p-3
-              md:p-4 bg-gradient-to-tr from-white to-red-50
+              md:p-4 bg-gradient-to-tr from-white to-gray-50
               shadow-[0_4px_6px_-1px_#77656830,0_2px_4px_-1px_#ffebee5d] ${
                 !isShowEvent && "hover:cursor-pointer"
               }`}
