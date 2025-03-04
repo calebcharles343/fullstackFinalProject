@@ -13,8 +13,8 @@ interface FormData {
 
 const LoginForm: React.FC = () => {
   const [formData, setFormData] = useState<FormData>({
-    email: "",
-    password: "",
+    email: "calebcharles343@gmail.com",
+    password: "tunga123",
   });
   const [showPassword, setShowPassword] = useState<boolean>(false);
 
