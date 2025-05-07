@@ -1,8 +1,7 @@
 import axios from "axios";
+import { baseUrl } from "./baseUrl";
 
-// import { SignupTypes } from "../interfaces.ts";
-
-const apiURL = "https://tunga-c3-diaryapi.onrender.com/api/cohort3-fullstack";
+const apiURL = baseUrl();
 
 export const login = async function (email: string, password: string) {
   try {
@@ -25,7 +24,6 @@ export const login = async function (email: string, password: string) {
 export const logout = async function () {
   try {
     const response = await axios.post(`${apiURL}/stations/logout`);
-    // console.log(response.data);
     document.cookie = "jwt=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
 
     return response.data;

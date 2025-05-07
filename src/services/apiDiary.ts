@@ -1,10 +1,11 @@
 import axios from "axios";
 import { localStorageUser } from "../utils/localStorageUser";
+import { baseUrl } from "./baseUrl";
 
-const url = "https://tunga-c3-diaryapi.onrender.com/api/cohort3-fullstack";
+const apiURL = baseUrl();
 
 const axiosInstance = axios.create({
-  baseURL: url,
+  baseURL: apiURL,
 });
 
 const getToken = () => {
